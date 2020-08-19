@@ -11,15 +11,14 @@ public class EmployeeDTO {
 	String lastName;
 	String email;
 	String phoneNumber;
-	double salary;
+	int salary;
 	List<JobHistoryDTO> listJH = new ArrayList<JobHistoryDTO>();
 	boolean active;
 	private String workingDay;
 	private String identityCard;
 	private String address;
 	private String introduceBuddy;
-	
-	
+
 	public boolean isActive() {
 		return active;
 	}
@@ -108,11 +107,11 @@ public class EmployeeDTO {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public double getSalary() {
+	public int getSalary() {
 		return salary;
 	}
 
-	public void setSalary(double salary) {
+	public void setSalary(int salary) {
 		this.salary = salary;
 	}
 

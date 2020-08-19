@@ -45,35 +45,40 @@ public class TimeKeepingService implements ITimeKeepingService {
 	 */
 	@Override
 	public List<TimeKeepingDTO> saveAll() {
-//		List<TimeKeepingEntity> oldList = timeKeepingRepository.findAll();
-//		TimeKeepingDTO lastTimeKeepingDto = timeKeepingConveter.toDTO(oldList.get(oldList.size()));
-		List<TimeKeepingEntity> newListTimKeeping = new ArrayList<TimeKeepingEntity>();
-		List<EmployeeEntity> listEmployeeEntity = employeeReposiotry.findAll();
-		List<TimeKeepingDTO> listDTO = new ArrayList<TimeKeepingDTO>();
-		// lấy ngày hiện tại ra kiểm tra
-		Calendar c = Calendar.getInstance();
-		DateTime date = new DateTime();
-		int year = c.get(Calendar.YEAR);
-		int month = c.get(Calendar.MONTH);
-		int day = c.get(Calendar.DAY_OF_MONTH);
-		int hour = c.get(Calendar.HOUR_OF_DAY);
-		int minute = c.get(Calendar.MINUTE);
-		date.setDateTime(hour, minute, day, hour, year);
-		String time = date.format();
+		List<TimeKeepingEntity> listoldTimeKeeping = timeKeepingRepository.findByStatus(1);
+		System.out.println(listoldTimeKeeping.size());
+		if (listoldTimeKeeping.size() < 0 || listoldTimeKeeping == null) {
+			List<TimeKeepingEntity> newListTimKeeping = new ArrayList<TimeKeepingEntity>();
+			List<EmployeeEntity> listEmployeeEntity = employeeReposiotry.findAll();
+			List<TimeKeepingDTO> listDTO = new ArrayList<TimeKeepingDTO>();
+			// lấy ngày hiện tại ra kiểm tra
+			Calendar c = Calendar.getInstance();
+			DateTime date = new DateTime();
+			int year = c.get(Calendar.YEAR);
+			int month = c.get(Calendar.MONTH);
+			int day = c.get(Calendar.DAY_OF_MONTH);
+			int hour = c.get(Calendar.HOUR_OF_DAY);
+			int minute = c.get(Calendar.MINUTE);
+			date.setDateTime(hour, minute, day, hour, year);
+			String time = date.format();
 
-		for (EmployeeEntity item : listEmployeeEntity) {
-			TimeKeepingEntity t = new TimeKeepingEntity();
+			for (EmployeeEntity item : listEmployeeEntity) {
+				TimeKeepingEntity t = new TimeKeepingEntity();
 
-			t.setDateStart(time);
-			t.setEmployee(item);
-			t.setMinimumTime(6);
-			t.setStatus(1);
+				t.setDateStart(time);
+				t.setEmployee(item);
+				t.setMinimumTime(6);
+				t.setStatus(1);
 
-			newListTimKeeping.add(t);
-			listDTO.add(timeKeepingConveter.toDTO(t));
+				newListTimKeeping.add(t);
+				listDTO.add(timeKeepingConveter.toDTO(t));
+				timeKeepingRepository.save(newListTimKeeping);
+				return listDTO;
+			}
+
 		}
-		timeKeepingRepository.save(newListTimKeeping);
-		return listDTO;
+		return null;
+
 	}
 
 	@Override
@@ -169,7 +174,7 @@ public class TimeKeepingService implements ITimeKeepingService {
 		int minute = c.get(Calendar.MINUTE);
 		date.setDateTime(hour, minute, day, hour, year);
 		String time = date.format();
-		
+
 		TimeKeepingEntity oldentity = timeKeepingRepository.findOne(model.getId());
 
 		TimeKeepingDetailEntity tkd = new TimeKeepingDetailEntity(time, shift, oldentity);
@@ -180,7 +185,7 @@ public class TimeKeepingService implements ITimeKeepingService {
 		if (shift.equals("afternoon")) {
 			oldentity.setAfternoon(0);
 		}
-		
+
 		oldentity = timeKeepingRepository.save(oldentity);
 		return timeKeepingConveter.toDTO(oldentity);
 	}

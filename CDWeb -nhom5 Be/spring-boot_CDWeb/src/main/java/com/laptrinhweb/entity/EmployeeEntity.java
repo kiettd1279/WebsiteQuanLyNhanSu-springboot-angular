@@ -19,52 +19,53 @@ public class EmployeeEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column
-	private String firstName ;
-	
+	private String firstName;
+
 	@Column
-	private String lastname ;
-	
-	@Column 
+	private String lastname;
+
+	@Column
 	private String email;
-	
-	@Column 
-	private String phoneNumber;
-	
+
 	@Column
-	private double salary;
-	
+	private String phoneNumber;
+
+	@Column
+	private int salary;
+
 //	@OneToMany(mappedBy = "jobHistory")
 //	private List<JobHistoryEntity> jobHistorys = new ArrayList<JobHistoryEntity>();
 
-	
 	@OneToMany(mappedBy = "employee")
 	private List<JobHistoryEntity> jobHistory = new ArrayList<JobHistoryEntity>();
-	
+
 	@OneToMany(mappedBy = "employee")
 	private List<TimeKeepingEntity> timeKeeping = new ArrayList<TimeKeepingEntity>();
 
 	@ManyToOne
 	@JoinColumn(name = "department_id")
 	private DeparmentEntity department;
-	
-	@Column(name = "active" )
+
+	@OneToMany(mappedBy = "employee")
+	private List<SalaryEntity> salaryEntity = new ArrayList<SalaryEntity>();
+
+	@Column(name = "active")
 	int active;
-	
+
 	@Column(name = "workingDay")
 	private String workingDay;
-	
+
 	@Column(name = "identityCard")
 	private String identityCard;
-	
+
 	@Column(name = "address")
 	private String address;
-	
+
 	@Column(name = "introduceBuddy")
 	private String introduceBuddy;
-	
-	
+
 	public int getActive() {
 		return active;
 	}
@@ -169,15 +170,12 @@ public class EmployeeEntity {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public double getSalary() {
+	public int getSalary() {
 		return salary;
 	}
 
-	public void setSalary(double salary) {
+	public void setSalary(int salary) {
 		this.salary = salary;
 	}
 
-
-	
-	
 }

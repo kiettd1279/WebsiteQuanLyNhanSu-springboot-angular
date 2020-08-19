@@ -48,18 +48,17 @@ export class KeepingsComponent implements OnInit {
     });
   }
   creatTimeKeeping(){
-  
-    this.timeKeepingService.closeTimeKeeping().subscribe(res => {
+    this.timeKeepingService.creaTimeKeeping().subscribe(res => {
       console.log("creatTimKeeping");
       if(res != null){
-
         this.loadTimeKeepingMorning();
         this.loadTimeKeepingAfternoon();
         this.toastr.success("đã tạo bảng chấm công","Thành công")
         console.log("Đã tạo bảng");
+      }else{
+        this.toastr.error("Bảng công chưa được chốt","Thất bại")
       }
-      
-   //   this.paging = res.paging;
+    
     });
   }
   startUpMorning(timeKeeping : Timekeeping){
