@@ -12,7 +12,7 @@ import {ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWee
 import { ScheduleComponent } from './schedule/schedule.component';
 import { AcceptCandidateComponent } from './accept-candidate/accept-candidate.component';
 import { DeclineCandidateComponent } from './decline-candidate/decline-candidate.component';
-
+import {ToastrModule} from 'ngx-toastr'
 
 @NgModule({
   declarations: [CandidateComponent, AddCandidateComponent, InfoCandidateComponent, ScheduleComponent, AcceptCandidateComponent, DeclineCandidateComponent],
@@ -26,6 +26,7 @@ import { DeclineCandidateComponent } from './decline-candidate/decline-candidate
     ReactiveFormsModule,
     ScheduleModule, 
     RecurrenceEditorModule,
+    ToastrModule
   ],
   providers: [DayService, WeekService, WorkWeekService, MonthService, AgendaService ]
 })

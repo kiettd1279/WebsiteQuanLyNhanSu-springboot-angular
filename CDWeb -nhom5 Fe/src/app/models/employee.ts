@@ -17,8 +17,8 @@ export interface Employee {
     // isActive: boolean;
 
     id: number;
-    firstname: string;
-    lastname: string;
+    firstName: string;
+    lastName: string;
     birthDay: Date;
     gender: boolean;
     email: string;

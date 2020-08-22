@@ -19,9 +19,6 @@ export interface Candidate {
     skill: string;
     hobby: string;
     position: string;
-    status: number;
+    status: number;//if =0 : candidate, if=1 employee, if=2 khong chap nhan
     note: Note;
-
-
-
 }
