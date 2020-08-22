@@ -12,11 +12,11 @@ export class CandidateService {
 
   constructor(private apiService: ApiService, private http: HttpClient) { }
 
-  list(paging: Paging, type: number): Observable<RootObj<[Candidate]>> {
+  list(paging: Paging, type: number): Observable<[Candidate]> {
     const query = `page=${paging.page + 1}&page_limit=4`;
     console.log(`${this.apiService.apiUrl.candidates.home}/${type}?${query}`);
-    return this.apiService.get<RootObj<[Candidate]>>
-      (`${this.apiService.apiUrl.candidates.type}/${type}?${query}`);
+    return this.apiService.get<[Candidate]>
+      (`${this.apiService.apiUrl.candidates.home}/?${query}`);
   }
 
   getOne(id): Observable<RootObj<Candidate>> {
@@ -24,40 +24,13 @@ export class CandidateService {
       (`${this.apiService.apiUrl.candidates.home}/${id}`);
   }
 
-  edit(id, status: number): Observable<RootObj<Candidate>> {
-    console.log("status: " + status);
-    
+  edit(id,candidate: Candidate): Observable<RootObj<Candidate>> {
     return this.apiService.put<RootObj<Candidate>>
-      (`${this.apiService.apiUrl.candidates.home}/${id}`, status);
+      (`${this.apiService.apiUrl.candidates.home}/${id}`,candidate);
   }
 
-  addCandidate(file: File, candidate: Candidate): Observable<any>{
-    const formData: FormData = new FormData();
-    formData.append('UploadedFile', file);
-    formData.append('Firstname', candidate.firstname );
-    formData.append('Lastname', candidate.lastname);
-    formData.append('BirthDay', candidate.birthDay);
-    formData.append('Gender', candidate.gender + '');
-    formData.append('Email', candidate.email );
-    formData.append('PhoneNumber', candidate.phoneNumber);
-    formData.append('Ethnic', candidate.ethnic);
-    formData.append('Hometown', candidate.hometown);
-    formData.append('IDCard', candidate.IDCard);
-    formData.append('Degree', candidate.degree);
-    formData.append('Career', candidate.career);
-    formData.append('Experience', candidate.experience);
-    formData.append('Literacy', candidate.literacy);
-    formData.append('Skill', candidate.skill);
-    formData.append('Hobby', candidate.hobby);
-    formData.append('Position', candidate.position);
-    formData.append('Status', 0 + '');
-    // formData.append('Note', candidate.note.id + '');
-   // formData.append('Note',0 + '');
-    formData.append('ImageName', '');
-    formData.append('id', '');
-
-
-    const req = new HttpRequest('POST', this.apiService.apiUrl.candidates.home, formData);
+  addCandidate( candidate: Candidate): Observable<any>{
+    const req = new HttpRequest('POST', this.apiService.apiUrl.candidates.home, candidate);
 
     return this.http.request(req);
 

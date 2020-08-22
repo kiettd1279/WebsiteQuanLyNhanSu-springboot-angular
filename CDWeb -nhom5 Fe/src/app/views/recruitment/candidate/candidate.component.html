@@ -43,7 +43,7 @@
             </ngx-datatable-column>
         </ngx-datatable> -->
         <div class="row">
-        <div class="card col-3 mb-4 ml-5 mr-5" style="border-radius: 12px; " *ngFor="let c of candidates" >
+        <div class="card col-3 mb-4 ml-3 mr-3" style="border-radius: 12px; " *ngFor="let c of candidates" >
             <div class="choose" (click)="choose(c.id)">
             <div class="d-flex justify-content-center p-4">
                 <img [src]="empImgPath + c.imageName" height="100px" width="100px" class="rounded-circle"
@@ -56,8 +56,8 @@
             <span class="p-2 d-flex justify-content-center">Trình độ: &nbsp; <span class="font-weight-bold">{{c.literacy}}</span></span>
             </div>
             <div class="row pt-3">
-                <div class="choose p-2 col-6 border  border-bottom-0  border-left-0" (click)="accept(c.id)"><span class="font-weight-bold d-flex justify-content-center text-success">Chấp nhận</span></div>
-                <div class="choose p-2 col-6 border  border-bottom-0  border-left-0 border-right-0" (click)="decline(c.id)"><span class="font-weight-bold d-flex justify-content-center text-danger">Từ chối</span></div>
+                <div class="choose p-2 col-6 border  border-bottom-0  border-left-0" (click)="accept(c)"><span class="font-weight-bold d-flex justify-content-center text-success">Chấp nhận</span></div>
+                <div class="choose p-2 col-6 border  border-bottom-0  border-left-0 border-right-0" (click)="decline(c)"><span class="font-weight-bold d-flex justify-content-center text-danger">Từ chối</span></div>
 
             </div>
         </div>

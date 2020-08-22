@@ -4,7 +4,7 @@
             <tab heading="Thông tin cơ bản">
                 <div class="row">
                     <div class="col-3">
-                        <img [src]="empImgPath + choosedEmp.imageName" height="210em" width="155em"
+                        <img src="assets/img/candidates/nhuy.jpg" height="210em" width="155em"
                             style="border-radius: 8px; border: 1px solid rgba(81, 130, 202, 0.658);padding: 5px"
                             *ngIf="img">
                     </div>
@@ -23,8 +23,8 @@
                             </div>
                             <div class="col-3">
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class=" h4 text-danger"><small>{{choosedEmp.lastname}}
-                                            {{choosedEmp.firstname}}</small></p>
+                                    <p class=" h4 text-danger"><small>{{choosedEmp.lastName}}
+                                            {{choosedEmp.firstName}}</small></p>
                                 </div>
                                 <div class="ml-3 mt-3 mb-4">
                                     <p class="h4 text-dark"><small> {{choosedEmp.birthDay}}</small></p>
@@ -62,7 +62,7 @@
             <tab heading="Liên lạc">
                 <div class="row">
                     <div class="col-3">
-                        <img [src]="choosedEmp.image" height="210em" width="155em"
+                        <img src="assets/img/candidates/nhuy.jpg" height="210em" width="155em"
                             style="border-radius: 8px; border: 1px solid rgba(81, 130, 202, 0.658);padding: 5px"
                             *ngIf="img">
                     </div>
@@ -99,7 +99,7 @@
             <tab heading="Công Việc">
                 <div class="row">
                     <div class="col-3">
-                        <img [src]="choosedEmp.image" height="210em" width="155em"
+                        <img src="assets/img/candidates/nhuy.jpg"height="210em" width="155em"
                             style="border-radius: 8px; border: 1px solid rgba(81, 130, 202, 0.658);padding: 5px"
                             *ngIf="img">
                     </div>
@@ -134,7 +134,7 @@
             <tab heading="Bằng Cấp">
                 <div class="row">
                     <div class="col-3">
-                        <img [src]="choosedEmp.image" height="210em" width="155em"
+                        <img src="assets/img/candidates/nhuy.jpg" height="210em" width="155em"
                             style="border-radius: 8px; border: 1px solid rgba(81, 130, 202, 0.658);padding: 5px"
                             *ngIf="img">
                     </div>
@@ -184,7 +184,7 @@
             
             <ngx-datatable-column name="Tên">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                    <span class="cursor-hover" (click)="choose(row)">{{ row.firstname}}</span>
+                    <span class="cursor-hover" (click)="choose(row)">{{ row.firstName}} {{ row.lastName}}</span>
                 </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="Lương cơ bản" prop="salary">

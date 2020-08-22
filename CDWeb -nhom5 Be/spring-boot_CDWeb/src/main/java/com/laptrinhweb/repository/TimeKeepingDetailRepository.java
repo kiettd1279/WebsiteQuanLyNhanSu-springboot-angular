@@ -9,4 +9,6 @@ import com.laptrinhweb.entity.TimeKeepingDetailEntity;
 public interface TimeKeepingDetailRepository extends JpaRepository<TimeKeepingDetailEntity , Long > {
 	List<TimeKeepingDetailEntity> findByStatus(int status);
 	List<TimeKeepingDetailEntity> findByShift(String shift);
+	
+	
 }

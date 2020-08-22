@@ -54,15 +54,13 @@ export class AcceptCandidateComponent implements OnInit {
     }
     this.candidateService.list(this.paging, 1).subscribe(res => {
       console.log(res);
-      this.candidates = res.data;
+      this.candidates = res;
     //  this.paging = res.paging;
     });
   };
 
   decline(id) {
-    this.candidateService.edit(id, 3).subscribe(res => {
-      this.loadCandidate(null);
-    });
+   
   }
 
   change(e) {

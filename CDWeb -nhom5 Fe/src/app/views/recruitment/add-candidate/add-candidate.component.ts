@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Candidate } from '../../../models/candidate';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CandidateService } from './../../../services/candidate.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -12,13 +13,13 @@ import { CandidateService } from './../../../services/candidate.service';
 })
 export class AddCandidateComponent implements OnInit {
   genders = [{value: true, name: 'Nam'}, {value: false, name: 'Nữ'}];
-  image: File;
+  image: String;
   imgName: string = 'Choose file';
   img: any = 'https://screenshotlayer.com/images/assets/placeholder.png';
-  candidate: Candidate = { id: 0 } as Candidate;
+  candidate: Candidate = {} as Candidate;
   saveForm: FormGroup;
 
-  constructor( private router: Router, private fb: FormBuilder, private candidateService: CandidateService) { 
+  constructor( private router: Router, private fb: FormBuilder, private candidateService: CandidateService,private toastr :ToastrService) { 
     this.saveForm = this.fb.group({
       firstname: [''],
       lastname: [''],
@@ -44,15 +45,15 @@ export class AddCandidateComponent implements OnInit {
   }
 
   selectFile(event) {
-    this.image = event.target.files.item(0);
+    this.image = "";
     console.log(this.image);
   }
 
   save() {
-    this.candidateService.addCandidate(this.image, this.candidate).subscribe(res =>{
+    this.candidateService.addCandidate(this.candidate).subscribe(res =>{
       console.log(res);
       this.router.navigateByUrl('tuyen-dung/tuyen-nhan-su');
-
+      this.toastr.success('Thêm ứng cử viên thành công','');
     });
   }
 

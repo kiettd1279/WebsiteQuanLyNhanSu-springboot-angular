@@ -34,18 +34,18 @@ export class BasicInfoComponent implements OnInit {
   genders = [{value: true, name: 'Nam'}, {value: false, name: 'Nữ'}];
   action: string;
   employees: Employee[] = [];
-  employee: Employee = { id: 0 } as Employee;
-  paging = { page: 0, pageLimit: 10, totalItems: 3 } as Paging;
+  employee: Employee = {} as Employee;
+  paging = { page: 0, pageLimit: 10, totalItems: 10 } as Paging;
   img: any = 'https://screenshotlayer.com/images/assets/placeholder.png';
   empImgPath: any = this.apiService.apiUrl.employees.images;
   imgName: string = 'Choose file';
-  public imagePath;
+  public imagePath: any = "assets/img/candidates/";
   public job: any;
 
   choosedEmp: Employee = {
     id: 0,
-    firstname: '',
-    lastname: '',
+    firstName: '',
+    lastName: '',
     birthDay: null,
     gender: true,
     email: '',
@@ -86,16 +86,15 @@ export class BasicInfoComponent implements OnInit {
       this.paging.page = page.offset;
     }
     this.employeeService.list(this.paging).subscribe(res => {
-      this.employees = res.data;
+      this.employees = res;
    //   this.paging = res.paging;
     });
   };
 
 
   choose(row) {
-    console.log(row);
-    
     this.choosedEmp = row;
+    console.log(this.choosedEmp);
   }
 
   showAddModal() {
@@ -112,9 +111,8 @@ export class BasicInfoComponent implements OnInit {
   }
 
   save(){
-    console.log(this.employee);
     if(this.action == 'ADD'){
-      this.employeeService.addEmployee(this.image, this.employee).subscribe(res =>{
+      this.employeeService.addEmployee(this.employee).subscribe(res =>{
         console.log(res);
         this.ngOnInit;
       });

@@ -12,6 +12,7 @@ export class ApiService {
   apiUrl = {
     employees: {
       home: `${this.baseUrl}employees`,
+      getId: `${this.baseUrl}employee`,
       images: `${this.baseUrl}uploads/images/employees/`,
       canimg: `${this.baseUrl}uploads/images/candidates/`,
       jobInformations: `${this.baseUrl}employees/job-informations`,
