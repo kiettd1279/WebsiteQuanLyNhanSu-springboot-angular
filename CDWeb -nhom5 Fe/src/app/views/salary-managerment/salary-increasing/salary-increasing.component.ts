@@ -33,19 +33,19 @@ export class SalaryIncreasingComponent implements OnInit {
       this.employees = res.data;
   //    this.paging = res.paging;
     });
-  };
-
-  increaseSalary(empId: number, jobLevel: number) {
-    console.log('empId ' + empId);
-
-    this.salaryService.increase(empId, jobLevel).subscribe(
-      res => {
-        this.loadEmpWithJobInfor();
-      },
-      err => {
-        this.message = err.error.Message;
-        this.notifyModalRef = this.modalService.show(this.notifyModalTemplate);
-      });
   }
 
-}
+//   increaseSalary(empId: number, jobLevel: number) {
+//     console.log('empId ' + empId);
+
+//     this.salaryService.increase(empId, jobLevel).subscribe(
+//       res => {
+//         this.loadEmpWithJobInfor();
+//       },
+//       err => {
+//         this.message = err.error.Message;
+//         this.notifyModalRef = this.modalService.show(this.notifyModalTemplate);
+//       });
+//   }
+
+ }

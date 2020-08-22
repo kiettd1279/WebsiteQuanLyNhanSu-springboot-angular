@@ -27,21 +27,15 @@ export class SalaryCountingComponent implements OnInit {
     this.loadSalaryHistories();
   }
   
-  loadSalaryHistories(page = null) {
-    if (page != null) {
-      this.paging.page = page.offset;
-    }
-    this.salaryService.histories(this.paging).subscribe(res => {
-      this.salaryHistories = res.data;
-      console.log(this.salaryHistories);
+  paytrollSalary() {
+    this.salaryService.payroll().subscribe(res => {
+  //    this.salaryHistories = res;
      // this.paging = res.paging;
     });  
   };
 
-  countSalary(){
-    this.salaryService.count({month:8,year:2020}).subscribe(res => {
-      this.notifyModalRef = this.modalService.show(this.notifyModalTemplate);
-      this.loadSalaryHistories();
+  loadSalaryHistories(){
+    this.salaryService.loadSalaryHistorys().subscribe(res => {
      // location.reload();
     });
   }

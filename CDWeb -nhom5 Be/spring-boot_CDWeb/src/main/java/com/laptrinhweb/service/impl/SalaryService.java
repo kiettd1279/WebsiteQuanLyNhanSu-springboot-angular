@@ -61,6 +61,7 @@ public class SalaryService implements ISalaryService {
 	@Override
 	public List<SalaryDTO> paySalary() {
 		List<TimeKeepingEntity> listTimeKeeping = timekeepingReposotry.findByStatus(0);
+		System.out.println(listTimeKeeping.size());
 		List<SalaryDTO> dtos = new ArrayList<SalaryDTO>();
 		List<SalaryEntity> entitis = new ArrayList<SalaryEntity>();
 

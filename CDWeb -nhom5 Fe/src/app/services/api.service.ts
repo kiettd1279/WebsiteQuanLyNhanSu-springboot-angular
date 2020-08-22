@@ -67,9 +67,10 @@ export class ApiService {
       home: `${this.baseUrl}schedules`,
     },
     salary: {
+      home :`${this.baseUrl}salary`,
       counting: `${this.baseUrl}salaries/counting`,
       increasing: `${this.baseUrl}salaries/increasing`,
-      histories: `${this.baseUrl}salaries/histories`
+      payroll: `${this.baseUrl}salaries/payroll`
 
     },
   };

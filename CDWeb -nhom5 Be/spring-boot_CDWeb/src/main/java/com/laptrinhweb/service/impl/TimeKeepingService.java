@@ -5,8 +5,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import javax.rmi.CORBA.Tie;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,8 +44,10 @@ public class TimeKeepingService implements ITimeKeepingService {
 	@Override
 	public List<TimeKeepingDTO> saveAll() {
 		List<TimeKeepingEntity> listoldTimeKeeping = timeKeepingRepository.findByStatus(1);
-		System.out.println(listoldTimeKeeping.size());
-		if (listoldTimeKeeping.size() < 0 || listoldTimeKeeping == null) {
+		
+		
+		
+		if (listoldTimeKeeping.size() <= 0 || listoldTimeKeeping == null) {
 			List<TimeKeepingEntity> newListTimKeeping = new ArrayList<TimeKeepingEntity>();
 			List<EmployeeEntity> listEmployeeEntity = employeeReposiotry.findAll();
 			List<TimeKeepingDTO> listDTO = new ArrayList<TimeKeepingDTO>();
@@ -61,7 +61,7 @@ public class TimeKeepingService implements ITimeKeepingService {
 			int minute = c.get(Calendar.MINUTE);
 			date.setDateTime(hour, minute, day, hour, year);
 			String time = date.format();
-
+			System.out.println(listEmployeeEntity.size());
 			for (EmployeeEntity item : listEmployeeEntity) {
 				TimeKeepingEntity t = new TimeKeepingEntity();
 
@@ -72,13 +72,14 @@ public class TimeKeepingService implements ITimeKeepingService {
 
 				newListTimKeeping.add(t);
 				listDTO.add(timeKeepingConveter.toDTO(t));
-				timeKeepingRepository.save(newListTimKeeping);
-				return listDTO;
+				//timeKeepingRepository.save(newListTimKeeping);
+		
 			}
-
+			timeKeepingRepository.save(newListTimKeeping);
+			return listDTO;
 		}
 		return null;
-
+	
 	}
 
 	@Override

@@ -52,7 +52,7 @@ public class EmployeeEntity {
 	private List<SalaryEntity> salaryEntity = new ArrayList<SalaryEntity>();
 
 	@Column(name = "active")
-	int active;
+	private int active;
 
 	@Column(name = "workingDay")
 	private String workingDay;
