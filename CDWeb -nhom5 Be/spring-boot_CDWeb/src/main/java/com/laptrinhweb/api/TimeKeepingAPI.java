@@ -80,4 +80,9 @@ public class TimeKeepingAPI {
 		model.setId(id);
 		return timekeepingService.edit(model);
 	}
+	@GetMapping(value = "/timeKeeping/close")
+	public List<TimeKeepingDTO> closeTimeKeeping(){
+		return timekeepingService.CloseTimeKeeping();
+	}
+	
 }

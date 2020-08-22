@@ -11,9 +11,8 @@ import { Paging } from '../../../models/paging';
 })
 export class DepartmentComponent implements OnInit {
 
-  isCollapsed = false;
+
   departments = [];
-  paging = { page: 0, pageLimit: 10, totalItems: 3 } as Paging;
 
   constructor( private departmentService: DepartmentService,
     private apiService: ApiService) { }
@@ -22,13 +21,10 @@ export class DepartmentComponent implements OnInit {
     this.loadDepartments();
   }
 
-  loadDepartments(page = null) {
-    if (page != null) {
-      this.paging.page = page.offset;
-    }
-    this.departmentService.list(this.paging).subscribe(res => {
-      this.departments = res.data;
-    //  this.paging = res.paging;
+  loadDepartments() {
+    this.departmentService.list().subscribe(res => {
+      this.departments = res;
+      console.log(this.departments);
     });
   };
 

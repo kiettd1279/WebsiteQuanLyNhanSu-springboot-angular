@@ -18,10 +18,10 @@ public class SalaryAPI {
 	@Autowired
 	private ISalaryService salaryService;
 
-//	@GetMapping(value = "/salary")
-//	public List<SalaryDTO> findAllSalary() {
-//		return salaryService.findAll();
-//	}
+	@GetMapping(value = "/salaries")
+	public List<SalaryDTO> findAllSalary() {
+		return salaryService.findAllSalary();
+	}
 
 	@GetMapping(value = "/salary/payroll")
 	public List<SalaryDTO> paySalary() {

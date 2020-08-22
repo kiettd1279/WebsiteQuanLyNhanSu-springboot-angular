@@ -44,9 +44,7 @@ public class TimeKeepingService implements ITimeKeepingService {
 	@Override
 	public List<TimeKeepingDTO> saveAll() {
 		List<TimeKeepingEntity> listoldTimeKeeping = timeKeepingRepository.findByStatus(1);
-		
-		
-		
+
 		if (listoldTimeKeeping.size() <= 0 || listoldTimeKeeping == null) {
 			List<TimeKeepingEntity> newListTimKeeping = new ArrayList<TimeKeepingEntity>();
 			List<EmployeeEntity> listEmployeeEntity = employeeReposiotry.findAll();
@@ -72,14 +70,14 @@ public class TimeKeepingService implements ITimeKeepingService {
 
 				newListTimKeeping.add(t);
 				listDTO.add(timeKeepingConveter.toDTO(t));
-				//timeKeepingRepository.save(newListTimKeeping);
-		
+				// timeKeepingRepository.save(newListTimKeeping);
+
 			}
 			timeKeepingRepository.save(newListTimKeeping);
 			return listDTO;
 		}
 		return null;
-	
+
 	}
 
 	@Override
@@ -179,6 +177,7 @@ public class TimeKeepingService implements ITimeKeepingService {
 		TimeKeepingEntity oldentity = timeKeepingRepository.findOne(model.getId());
 
 		TimeKeepingDetailEntity tkd = new TimeKeepingDetailEntity(time, shift, oldentity);
+		tkd.setEmployee(oldentity.getEmployee());
 		tkd = timeKeepingDetailRepository.save(tkd);
 		if (shift.equals("morning")) {
 			oldentity.setMorning(0);
@@ -206,6 +205,16 @@ public class TimeKeepingService implements ITimeKeepingService {
 
 	@Override
 	public List<TimeKeepingDTO> CloseTimeKeeping() {
-		return null;
+		List<TimeKeepingEntity> listEntity = timeKeepingRepository.findByStatus(1);
+		List<TimeKeepingDTO> listDTO = new ArrayList<TimeKeepingDTO>();
+		if (listEntity.size() <=0) {
+			return null;
+		}
+		for (TimeKeepingEntity item : listEntity) {
+			item.setStatus(0);
+			listDTO.add(timeKeepingConveter.toDTO(item));
+		}
+		timeKeepingRepository.save(listEntity);
+		return listDTO;
 	}
 }

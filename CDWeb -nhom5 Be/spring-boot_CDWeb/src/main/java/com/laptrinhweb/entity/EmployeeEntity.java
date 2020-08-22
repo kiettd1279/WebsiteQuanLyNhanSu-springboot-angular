@@ -51,6 +51,9 @@ public class EmployeeEntity {
 	@OneToMany(mappedBy = "employee")
 	private List<SalaryEntity> salaryEntity = new ArrayList<SalaryEntity>();
 
+	@OneToMany(mappedBy = "employee")
+	private List<TimeKeepingDetailEntity> timeKeepingDetail = new ArrayList<TimeKeepingDetailEntity>();
+
 	@Column(name = "active")
 	private int active;
 

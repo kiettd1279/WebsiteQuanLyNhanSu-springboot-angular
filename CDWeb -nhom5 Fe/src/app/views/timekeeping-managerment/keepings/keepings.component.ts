@@ -90,8 +90,11 @@ export class KeepingsComponent implements OnInit {
   }
   closeTimeKeeping(){
     this.timeKeepingService.closeTimeKeeping().subscribe(res=> {
-      if(res!= null){
-        this.toastr.info("đã chốt lương","Thành Công");
+    
+      if(res != null){
+        this.toastr.info("Thành công","Chốt Công");
+      }else{
+        this.toastr.error("thất bại","Chốt Công");
       }
     });
   }

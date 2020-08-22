@@ -13,8 +13,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 export class SalaryCountingComponent implements OnInit {
   
   salaryHistories: SalaryHistory[] = [];
-  paging = { page: 1, pageLimit: 10, totalItems: 10 } as Paging;
-  message = '';
+  salary = [];
   notifyModalRef: BsModalRef;
   @ViewChild('notifyModalTemplate') public notifyModalTemplate: TemplateRef<any>;
 
@@ -36,7 +35,8 @@ export class SalaryCountingComponent implements OnInit {
 
   loadSalaryHistories(){
     this.salaryService.loadSalaryHistorys().subscribe(res => {
-     // location.reload();
+     this.salary = res;
+     console.log(res);
     });
   }
 

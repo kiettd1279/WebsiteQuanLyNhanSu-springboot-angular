@@ -50,6 +50,20 @@ public class TimeKeepingDetailEntity {
 	@JoinColumn(name = "TimeKeepingId")
 	private TimeKeepingEntity timeKeeping;
 
+	@ManyToOne
+	@JoinColumn(name = "EmployeeId")
+	private EmployeeEntity employee;
+
+	
+	
+	public EmployeeEntity getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(EmployeeEntity employee) {
+		this.employee = employee;
+	}
+
 	public long getId() {
 		return Id;
 	}

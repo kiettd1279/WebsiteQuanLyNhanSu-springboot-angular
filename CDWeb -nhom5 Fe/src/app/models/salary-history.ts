@@ -1,15 +1,13 @@
 import { Employee } from './employee';
 
 export interface SalaryHistory {
-    id: number,
-    countedDate: Date,
-    workDay: number,
-    salaryCoefficient: number,
-    taxMoney: number,
-    rewardMoney: number,
-    publishMoney: number,
-    insurranceMoney: number,
-    salary: number,
-    isActive: boolean,
-    employee: Employee
+    id: number;
+    CountedDate :string;
+    WorkDay :number;
+    TaxMoney: number;
+    RewardMoney:number;
+    PublishMoney:number;
+    InsurranceMoney:number;
+    Salary:number;
+    employee :Employee;
 }

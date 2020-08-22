@@ -8,17 +8,16 @@ import { Paging } from '../../../models/paging';
   styleUrls: ['./timekeeping-history.component.css']
 })
 export class TimekeepingHistoryComponent implements OnInit {
-  paging = { page: 0, pageLimit: 10, totalItems: 3 } as Paging;
   listTimeKeepingDetail =[];
   constructor(private timeKeepingDetailService : TimeKeepingDetailService ) { }
 
   ngOnInit(): void {
- //   this.loadTimeKeepingDetailHistory();
+  this.loadTimeKeepingDetailHistory();
   }
-  // loadTimeKeepingDetailHistory(){
-  //   this.timeKeepingDetailService.listTimeKeepingDetail().subscribe(res => {
-  //       this.listTimeKeepingDetail = res.data;
-  //       console.log(this.listTimeKeepingDetail);
-  //   });
-  // }
+  loadTimeKeepingDetailHistory(){
+    this.timeKeepingDetailService.getAllTimeKeepingDetail().subscribe(res => {
+        this.listTimeKeepingDetail = res;
+        console.log(this.listTimeKeepingDetail);
+    });
+}
 }

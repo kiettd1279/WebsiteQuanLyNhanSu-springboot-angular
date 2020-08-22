@@ -15,11 +15,11 @@ public class TimeKeepingDetailDTO {
 	private TimeKeepingDTO timeKeeping;
 
 	private EmployeeDTO employee;
-
+	
 	public EmployeeDTO getEmployee() {
 		return employee;
 	}
-
+	
 	public void setEmployee(EmployeeDTO employee) {
 		this.employee = employee;
 	}

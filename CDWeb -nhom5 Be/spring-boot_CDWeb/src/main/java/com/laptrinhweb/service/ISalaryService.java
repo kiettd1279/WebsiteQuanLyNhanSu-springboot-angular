@@ -11,4 +11,6 @@ public interface ISalaryService {
 	boolean checkSalary();
 
 	List<SalaryDTO> paySalary();
+	
+	List<SalaryDTO> findAllSalary();
 }

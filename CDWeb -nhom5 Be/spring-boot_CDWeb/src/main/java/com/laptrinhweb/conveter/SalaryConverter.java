@@ -16,6 +16,8 @@ public class SalaryConverter {
 		dto.setWorkDay(entity.getWorkDay());
 		dto.setRewardMoney(entity.getRewardMoney());
 		dto.setSalary(entity.getSalary());
+		dto.setPublishMoney(entity.getPublishMoney());
 		return dto;
+		
 	}
 }

@@ -43,6 +43,10 @@ public class SalaryEntity {
 	@ManyToOne
 	@JoinColumn(name = "employeeID")
 	private EmployeeEntity employee;
+	
+	public SalaryEntity() {
+		super();
+	}
 
 	public SalaryEntity(String countedDate, int workDay, int taxMoney, int rewardMoney, int publishMoney,
 			int insurranceMoney, double salary, boolean isActive) {

@@ -30,11 +30,11 @@ export class ApiService {
     timeKeepingDetail: {
       home: `${this.baseUrl}timeKeepingDetail`,
       monrning: `${this.baseUrl}timeKeepingDetail/morning`,
-      afteroon: `${this.baseUrl}timeKeepingDetail/afternoon`
-
+      afteroon: `${this.baseUrl}timeKeepingDetail/afternoon`,
+      history: `${this.baseUrl}timeKeepingDetail/history`
     },
     departments: {
-      home: `${this.baseUrl}departments`
+      home: `${this.baseUrl}derparment`
     },
     degrees: {
       home: `${this.baseUrl}degrees`
@@ -67,7 +67,7 @@ export class ApiService {
       home: `${this.baseUrl}schedules`,
     },
     salary: {
-      home :`${this.baseUrl}salary`,
+      home :`${this.baseUrl}salaries`,
       counting: `${this.baseUrl}salaries/counting`,
       increasing: `${this.baseUrl}salaries/increasing`,
       payroll: `${this.baseUrl}salaries/payroll`

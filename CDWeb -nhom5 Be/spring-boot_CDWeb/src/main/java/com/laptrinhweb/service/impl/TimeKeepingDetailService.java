@@ -40,8 +40,16 @@ public class TimeKeepingDetailService implements ITimeKeepingDetailService {
 
 	@Override
 	public List<TimeKeepingDetailDTO> findAllHistory() {
-		// TODO Auto-generated method stub
-		return null;
+		List<TimeKeepingDetailEntity> listEntity = timeKeepingDetailRepostory.findAll();
+		List<TimeKeepingDetailDTO> listDTO = new ArrayList<TimeKeepingDetailDTO>();
+		System.out.println(listEntity.size());
+		for (int i = listEntity.size() - 1; i >= 0; i--) {
+			TimeKeepingDetailDTO dto = timeKeepingDetailConveter.toDTO(listEntity.get(i));
+			dto.setEmployee(employeeConveter.toDTO(listEntity.get(i).getEmployee()));
+			listDTO.add(dto);
+		}
+		
+		return listDTO;
 	}
 
 	@Override
@@ -61,13 +69,14 @@ public class TimeKeepingDetailService implements ITimeKeepingDetailService {
 		DateTime olddate = new DateTime();
 		olddate.setDate(oldEntity.getTimeStart());
 		int workingDay = date.subtractHours(date.getTime(), olddate.getTime());
-		//System.out.println(workingDay +" start " +date.getTime() +" old :" +olddate.getTime());
+		// System.out.println(workingDay +" start " +date.getTime() +" old :"
+		// +olddate.getTime());
 		oldEntity.setTimeWorking(workingDay);
 		oldEntity.setTimeEnd(date.format());
 		TimeKeepingEntity tkEntity = oldEntity.getTimeKeeping();
 		tkEntity.plusWorkTime(workingDay);
 		timeKeepingRepository.save(tkEntity);
-		
+
 		oldEntity = timeKeepingDetailRepostory.save(oldEntity);
 		TimeKeepingDetailDTO dto = timeKeepingDetailConveter.toDTO(oldEntity);
 		return dto;

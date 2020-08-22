@@ -6,14 +6,17 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
-
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 @NgModule({
   imports: [
     FormsModule,
     DashboardRoutingModule,
     ChartsModule,
     BsDropdownModule,
-    ButtonsModule.forRoot()
+    ButtonsModule.forRoot(),
+    NgxDatatableModule,
+    TabsModule
   ],
   declarations: [ DashboardComponent ]
 })

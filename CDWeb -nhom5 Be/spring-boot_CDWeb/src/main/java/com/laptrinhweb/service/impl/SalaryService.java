@@ -40,16 +40,24 @@ public class SalaryService implements ISalaryService {
 	@Autowired
 	EmployeeConveter employeeConverter;
 
+	@Override
+	public List<SalaryDTO> findAllSalary() {
+		List<SalaryEntity> entitis = salaryReposiotry.findAll();
+
+		System.out.println(entitis.size());
+		
+		List<SalaryDTO> dtos = new ArrayList<SalaryDTO>();
+		for (SalaryEntity item : entitis) {
+
+			SalaryDTO dto = salaryConverter.toDTO(item);
+			dto.setEmployee(employeeConverter.toDTO(item.getEmployee()));
+			dtos.add(dto);
+		}
+		return dtos;
+	}
 //	@Override
-//	public List<SalaryDTO> findAll() {
-//		List<SalaryEntity> entitis = salaryReposiotry.findByIsActive(true);
-//		List<SalaryDTO> dtos = new ArrayList<SalaryDTO>();
-//		for (SalaryEntity item : entitis) {
-//
-//			SalaryDTO dto = salaryConverter.toDTO(item);
-//			dtos.add(dto);
-//		}
-//		return dtos;
+//	public List<SalaryDTO> findAllSalary() {
+//		
 //	}
 
 	@Override
@@ -128,4 +136,5 @@ public class SalaryService implements ISalaryService {
 		}
 		return 0;
 	}
+
 }

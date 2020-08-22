@@ -10,6 +10,10 @@ import { TimekeepingDetail } from '../models/timekeeping-detail';
 export class TimeKeepingDetailService {
 
   constructor(private apiService: ApiService) { }
+
+  getAllTimeKeepingDetail() :Observable<[TimekeepingDetail]> {
+    return this.apiService.get<[TimekeepingDetail]>(`${this.apiService.apiUrl.timeKeepingDetail.home}/history`);
+  }
   removeTimeKeepingDetail(data: TimekeepingDetail):Observable<[TimekeepingDetail]> {
     return this.apiService.delete<[TimekeepingDetail]>(`${this.apiService.apiUrl.timeKeepingDetail.home}/${data.id}`);
   }
@@ -21,6 +25,9 @@ export class TimeKeepingDetailService {
   }
   listAfternoon():Observable<[TimekeepingDetail]> {
     return this.apiService.get<[TimekeepingDetail]>(`${this.apiService.apiUrl.timeKeepingDetail.afteroon}`);
+  }
+  listHistory():Observable<[TimekeepingDetail]> {
+    return this.apiService.get<[TimekeepingDetail]>(`${this.apiService.apiUrl.timeKeepingDetail.history}`);
   }
 
   save(data: TimekeepingDetail): Observable<TimekeepingDetail> {

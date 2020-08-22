@@ -20,7 +20,11 @@ import com.laptrinhweb.service.ITimeKeepingDetailService;
 public class TimeKeepingDetailAPI {
 	@Autowired
 	ITimeKeepingDetailService timeKeepingDetailService;
-
+	@GetMapping(value = "/timeKeepingDetail/history")
+	public List<TimeKeepingDetailDTO> findAllHistory() {
+		return timeKeepingDetailService.findAllHistory();
+	}
+	
 	@GetMapping(value = "/timeKeepingDetail/morning")
 	public List<TimeKeepingDetailDTO> findAllTK() {
 		return timeKeepingDetailService.findAllShift("morning");
