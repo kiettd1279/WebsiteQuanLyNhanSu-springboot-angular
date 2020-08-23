@@ -1,27 +1,15 @@
-package com.laptrinhweb.entity;
+package com.laptrinhweb.dto;
 
-import java.util.Date;
-
-import javax.annotation.Generated;
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "user")
-public class UserEntity {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class UserDTO {
 	private long id;
-	
-	@Column(name = "name")
+
 	private String name;
-	
-	@Column(name = "password")
+
 	private String password;
 
 	public long getId() {
@@ -32,11 +20,11 @@ public class UserEntity {
 		this.id = id;
 	}
 
-	public String getName() {
+	public String getname() {
 		return name;
 	}
 
-	public void setname(String name) {
+	public void setUserName(String name) {
 		name = name;
 	}
 
@@ -47,6 +35,5 @@ public class UserEntity {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
 	
 }

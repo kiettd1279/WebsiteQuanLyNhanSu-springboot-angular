@@ -12,12 +12,13 @@ export class LoginComponent {
   userName: string;
   pass: string;
   user : User ={
-    UserName :"",
+    name :"",
     password: ""
   }
   constructor( private router: Router, private userService:UserService) {}
 
   error: any = false;
+  susu :any = false;
  
   loginUser($event){
     console.log($event);
@@ -26,10 +27,16 @@ export class LoginComponent {
 
   onKey($event){
     console.log($event.target.value)
-    this.error = true;
-    this.user.UserName =$event.target.value;
+    
+    this.user.name =$event.target.value;
     this.userService.checkUser(this.user).subscribe(res =>{
-      console.log(res);
+      if(res== null){
+        this.error = true;
+        this.susu = false;
+      }else{
+        this.error =false;
+        this.susu = true;
+      }
     });
   }
   

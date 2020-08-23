@@ -14,8 +14,10 @@
                       <span class="input-group-text"><i class="icon-user"></i></span>
                     </div>
                     <input type="text" class="form-control" placeholder="Username" autocomplete="username" required (keydown.Tab)="onKey($event)">
-                    <p *ngIf = "error">Loi usernme</p>
+                   
                   </div>
+                  <p style="color: crimson;" *ngIf = "error">Username không hợp lệ</p>
+                  <p style="color: gold;" *ngIf = "susu">Username hợp lệ</p>
                   <div class="input-group mb-4">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="icon-lock"></i></span>
