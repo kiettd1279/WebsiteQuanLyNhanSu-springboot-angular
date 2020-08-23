@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +9,13 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent { 
   message: string = '';
-  user: string;
+  userName: string;
   pass: string;
-  constructor( private router: Router,) {}
+  user : User ={
+    UserName :"",
+    password: ""
+  }
+  constructor( private router: Router, private userService:UserService) {}
 
   error: any = false;
  
@@ -21,6 +27,10 @@ export class LoginComponent {
   onKey($event){
     console.log($event.target.value)
     this.error = true;
-    
+    this.user.UserName =$event.target.value;
+    this.userService.checkUser(this.user).subscribe(res =>{
+      console.log(res);
+    });
   }
+  
 }

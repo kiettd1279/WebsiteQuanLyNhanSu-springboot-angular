@@ -74,6 +74,9 @@ export class ApiService {
       payroll: `${this.baseUrl}salaries/payroll`
 
     },
+    user:{
+      user:`${this.baseUrl}user`,
+    },
   };
 
   get<T>(url: string): Observable<T> {
