@@ -22,7 +22,7 @@ export class LoginComponent {
  
   loginUser($event){
     console.log($event);
-      this.router.navigate(['dashboard'])
+      this.router.navigate(['quan-ly-nhan-vien/thong-tin-co-ban'])
   }
 
   onKey($event){
