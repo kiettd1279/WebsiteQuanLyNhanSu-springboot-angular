@@ -37,6 +37,7 @@ public class CandidateService implements ICandidateService {
 			CandidateEntity oldEntity = candidateRepository.findOne(dto.getId());
 			entity = candidateConverter.toEntity(oldEntity, dto);
 		} else {
+			dto.setImageName("nhuy.jpg");
 			entity = candidateConverter.toEntity(dto);
 		}
 	
