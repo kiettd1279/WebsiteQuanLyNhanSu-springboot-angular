@@ -35,6 +35,7 @@ export class ApiService {
       history: `${this.baseUrl}timeKeepingDetail/history`
     },
     departments: {
+      getDept: `${this.baseUrl}derparment`,
       home: `${this.baseUrl}derparment`
     },
     degrees: {

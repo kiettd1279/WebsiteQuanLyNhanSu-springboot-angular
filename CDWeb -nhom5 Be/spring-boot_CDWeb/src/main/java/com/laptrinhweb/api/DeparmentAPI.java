@@ -28,7 +28,7 @@ public class DeparmentAPI {
 	}
 	@PostMapping(name  = "/derparment")
 	public DeparmentDTO creatDeparment(@RequestBody DeparmentDTO model) {
-		System.out.println(model.getName());
+//		System.out.println(model.getName());
 		return deparmentService.save(model);
 		
 	}
