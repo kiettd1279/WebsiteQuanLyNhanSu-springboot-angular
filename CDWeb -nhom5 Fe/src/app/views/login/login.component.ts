@@ -21,15 +21,6 @@ export class LoginComponent {
   susu :any = false;
  
 
-<<<<<<< HEAD
-  onKey($event){
-    
-    this.user.name =$event.target.value;
-    this.userService.checkUser(this.user).subscribe(res =>{
-      
-      console.log(res +"Back");
-      if(res== null){
-=======
   loginUser($event){
     console.log(this.user);
     
@@ -42,7 +33,6 @@ export class LoginComponent {
     },errr=>{
       console.log("Erro");
       
->>>>>>> c3e4997b87ea101a295e9aa99b7b4f54abba1794
         this.error = true;
         this.susu = false;
        

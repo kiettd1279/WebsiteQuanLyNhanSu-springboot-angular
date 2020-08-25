@@ -20,28 +20,6 @@ public class UserService implements IUserService {
 	@Autowired
 	private UserConverter userC;
 
-<<<<<<< HEAD
-	@Override
-	public UserDTO checkUser(UserDTO model) {
-		UserEntity entity =null;
-		try {
-			 entity = userR.findByName(model.getname());
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		
-		if (entity == null) {
-			return null;
-		} else {
-			if (entity.getName().equals(model.getname())) {
-				return userC.toDTO(entity);
-			} else {
-				UserDTO dto = new UserDTO();
-				dto.setUserName(model.getname());
-				dto.setPassword(null);
-				return dto;
-			}
-=======
 
 	@Override
 	public UserDTO checkUser(UserDTO model) {
@@ -70,7 +48,6 @@ public class UserService implements IUserService {
 			return sb.toString();
 		} catch (NoSuchAlgorithmException e) {
 			System.err.println(e);
->>>>>>> c3e4997b87ea101a295e9aa99b7b4f54abba1794
 		}
 		return null;
 	}

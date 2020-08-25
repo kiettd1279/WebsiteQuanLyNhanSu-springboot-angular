@@ -78,7 +78,6 @@ export class BasicInfoComponent implements OnInit {
   erroHo :any = false;
   ngOnInit(): void {
     this.loadEmployee();
-    this.choosedEmp = this.employees[0];
   }
   onHo($event){
     if($event.target.value == null ||$event.target.value==""){
