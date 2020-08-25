@@ -94,6 +94,7 @@ public class SalaryService implements ISalaryService {
 				int publishMoney = employee.getSalary() - rewardMoney - tax - insurrance;
 				SalaryEntity entity = new SalaryEntity(item.getDateEnd(), dayWorking, tax, 0, publishMoney, insurrance,
 						employee.getSalary(), true);
+				entity.setWorkDay(30);
 				entity.setEmployee(employee);
 
 				entitis.add(entity);

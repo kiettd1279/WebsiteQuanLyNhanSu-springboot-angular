@@ -23,7 +23,7 @@ public class SalaryAPI {
 		return salaryService.findAllSalary();
 	}
 
-	@GetMapping(value = "/salary/payroll")
+	@GetMapping(value = "/salaries/payroll")
 	public List<SalaryDTO> paySalary() {
 		return salaryService.paySalary();
 	}

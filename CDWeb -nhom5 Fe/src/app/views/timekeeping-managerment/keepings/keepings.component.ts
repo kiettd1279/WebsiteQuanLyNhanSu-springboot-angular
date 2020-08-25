@@ -21,9 +21,17 @@ export class KeepingsComponent implements OnInit {
     this.loadTimeKeepingMorning();
     this.loadTimeKeepingAfternoon();
     console.log("đã tạo bảng");
- 
-    
+
   }
+
+   
+    //search ------------------------------------------------
+
+    onKeypress($event){
+      console.log($event.target.value);
+   }
+
+    //---------------------------------------------------------
   loadTimeKeepingMorning(){
     this.timeKeepingService.listTimeKeepingMorning().subscribe(res =>{
         this.timeKeepingMorning = res;
@@ -79,8 +87,9 @@ export class KeepingsComponent implements OnInit {
   } 
   refet(){
     this.timeKeepingService.refetTimeKeeping().subscribe(res=> {
-      if(res ==null){
-        this.toastr.error("Ca nhân viên chưa chốt hết","Không thể refet")
+      console.log(res +" OKe Refet");
+      if(res ==null ){
+        this.toastr.error("Chấm công ngày mới thất bại","Không thể refet")
       }else{
         this.toastr.info("Đã tạo ngày chấm công mới","Đã refet")
       }
@@ -93,6 +102,8 @@ export class KeepingsComponent implements OnInit {
     
       if(res != null){
         this.toastr.info("Thành công","Chốt Công");
+        this.loadTimeKeepingMorning();
+        this.loadTimeKeepingAfternoon();
       }else{
         this.toastr.error("thất bại","Chốt Công");
       }
