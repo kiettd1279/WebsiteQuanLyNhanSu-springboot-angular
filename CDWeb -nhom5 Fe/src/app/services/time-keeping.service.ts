@@ -11,6 +11,12 @@ export class TimeKeepingService {
 
   constructor(private apiService: ApiService) { }
 
+  searchTimeKeeping(text : string ):Observable<[Timekeeping]>{
+    return this.apiService.get<[Timekeeping]>(`${this.apiService.apiUrl.timekeeping.all}/${text}`);
+  } 
+  loadTimeKeepingClose(): Observable<[Timekeeping]> {
+    return this.apiService.get<[Timekeeping]>(`${this.apiService.apiUrl.timekeeping.all}`);
+  }
   closeTimeKeeping(): Observable<[Timekeeping]> {
 
       return this.apiService.get<[Timekeeping]>(`${this.apiService.apiUrl.timekeeping.close}`);

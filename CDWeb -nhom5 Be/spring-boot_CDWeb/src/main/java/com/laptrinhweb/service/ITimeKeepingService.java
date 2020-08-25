@@ -16,7 +16,7 @@ public interface ITimeKeepingService {
 
 	List<TimeKeepingDTO> saveAll();
 
-	List<TimeKeepingInforDTO> findAll();
+	List<TimeKeepingDTO> findAll();
 
 	TimeKeepingDTO edit(TimeKeepingDTO model);
 
