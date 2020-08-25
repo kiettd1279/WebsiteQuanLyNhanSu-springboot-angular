@@ -217,30 +217,32 @@
                             <div class="row form-group ">
                                 <div class="col-6">
                                     <label for="pwd">Họ *</label>
-                                    <input type="text" class="form-control" (keydown.Tab)="onHo($event)" [(ngModel)]="employee.firstName"
-                                    formControlName="firstName">
-                                    <p style="color: crimson;"*ngIf = "erroHo" >Không bỏ trống trường này</p>
+                                    <input type="text" class="form-control" name="firstName" [(ngModel)]="employee.firstName"
+                                     ng-required="true" formControlName="firstName">
+                                    <span class="text-danger" *ngIf="saveForm.get('firstName')?.errors?.required && saveForm.get('firstName')?.touched">Trường dữ liệu không được để trống !</span>
                                 </div>
                                 <div class="col-6">
                                     <label for="pwd">Tên *</label>
-                                    <input type="text" class="form-control" (keydown.Tab)="onTen($event)"  [(ngModel)]="employee.lastName"
-                                    formControlName="lastName">
-                                    <p style="color: crimson;"*ngIf = "erroTen" >Không bỏ trống trường này</p>
+                                    <input type="text" class="form-control"  name="lastName" (keydown.Tab)="onTen($event)"  [(ngModel)]="employee.lastName"
+                                    ng-required="true" formControlName="lastName">
+                                    <span class="text-danger" *ngIf="saveForm.get('lastName')?.errors?.required && saveForm.get('lastName')?.touched">Trường dữ liệu không được để trống !</span>
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <div class="col-6">
-                                    <label for="pwd">Ngày sinh</label>
-                                    <input type="date" class="form-control" [(ngModel)]="employee.birthDay"
-                                    formControlName="birthDay">
+                                    <label for="pwd">Ngày sinh*</label>
+                                    <input type="date" class="form-control" name="birthDay" [(ngModel)]="employee.birthDay"
+                                    ng-required="true" formControlName="birthDay">
+                                    <span class="text-danger" *ngIf="saveForm.get('birthDay')?.errors?.required && saveForm.get('birthDay')?.touched">Trường dữ liệu không được để trống !</span>
                                 </div>
                                 <div class="col-6">
-                                    <label for="pwd">Giới tính</label>
-                                    <select [(ngModel)]="employee.gender" class="form-control" formControlName="gender">
+                                    <label for="pwd">Giới tính*</label>
+                                    <select [(ngModel)]="employee.gender" class="form-control"  name="gender" ng-required="true" formControlName="gender">
                                         <option *ngFor="let g of genders" value="{{g.value}}">
                                             {{g.name}}
                                         </option>
                                     </select>
+                                    <span class="text-danger" *ngIf="saveForm.get('gender')?.errors?.required && saveForm.get('gender')?.touched">Trường dữ liệu không được để trống !</span>
                                 </div>
                             </div>
                             <div class="form-group ">
@@ -260,9 +262,9 @@
                   
                     <div class="row form-group ">
                         <div class="col-6">
-                            <label for="pwd">Email</label>
-                            <input type="email" class="form-control" [(ngModel)]="employee.email" formControlName="email">
-
+                            <label for="pwd">Email*</label>
+                            <input type="email" class="form-control"  name="email"  [(ngModel)]="employee.email" ng-required="true"  formControlName="email">
+                            <span class="text-danger" *ngIf="saveForm.get('email')?.errors?.required && saveForm.get('email')?.touched">Trường dữ liệu không được để trống !</span>
                         </div>
                         <div class="col-6">
                             <label for="pwd">Số điện thoại</label>
@@ -278,7 +280,7 @@
                         <input type="text" class="form-control" [(ngModel)]="employee.salary"formControlName="salary">
                     </div>
                     <div class="form-group col text-center">
-                        <button type="submit" class="btn btn-outline-dark center">Lưu</button>
+                        <button type="submit" class="btn btn-outline-dark center" [disabled]="saveForm.invalid">Lưu</button>
                     </div>
                 </form>
             </div>

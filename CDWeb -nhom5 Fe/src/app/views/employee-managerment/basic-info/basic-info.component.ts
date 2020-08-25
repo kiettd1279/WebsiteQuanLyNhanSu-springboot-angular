@@ -62,11 +62,11 @@ export class BasicInfoComponent implements OnInit {
     private apiService: ApiService, private fb: FormBuilder,private toastr :ToastrService) { 
       
     this.saveForm = this.fb.group({
-      firstName: [''],
-      lastName: [''],
-      birthDay:[''],
-      gender: [''],
-      email: [''],
+      firstName: ['',[Validators.required]],
+      lastName: ['',[Validators.required]],
+      birthDay:['',[Validators.required]],
+      gender: ['',[Validators.required]],
+      email: ['',[Validators.required]],
       phoneNumber: [''],
       hireDay: [''],
       salary: [''],
