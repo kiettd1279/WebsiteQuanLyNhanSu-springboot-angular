@@ -1,10 +1,5 @@
 package com.laptrinhweb.dto;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 public class UserDTO {
 	private long id;
 
@@ -20,12 +15,12 @@ public class UserDTO {
 		this.id = id;
 	}
 
-	public String getname() {
+	public String getName() {
 		return name;
 	}
 
 	public void setUserName(String name) {
-		name = name;
+		this.name = name;
 	}
 
 	public String getPassword() {

@@ -12,31 +12,30 @@ export class LoginComponent {
   userName: string;
   pass: string;
   user : User ={
-    name :"",
-    password: ""
+    name :this.userName,
+    password: this.pass
   }
   constructor( private router: Router, private userService:UserService) {}
 
   error: any = false;
   susu :any = false;
  
-  loginUser($event){
-    console.log($event);
-      this.router.navigate(['quan-ly-nhan-vien/thong-tin-co-ban'])
-  }
 
-  onKey($event){
-    console.log($event.target.value)
+  loginUser($event){
+    console.log(this.user);
     
-    this.user.name =$event.target.value;
-    this.userService.checkUser(this.user).subscribe(res =>{
-      if(res== null){
+    this.userService.checkUser(this.user).subscribe((res) =>{
+      console.log("success");
+
+      this.error =false;
+      this.susu = true;
+      this.router.navigate(['quan-ly-nhan-vien/thong-tin-co-ban'])
+    },errr=>{
+      console.log("Erro");
+      
         this.error = true;
         this.susu = false;
-      }else{
-        this.error =false;
-        this.susu = true;
-      }
+       
     });
   }
   

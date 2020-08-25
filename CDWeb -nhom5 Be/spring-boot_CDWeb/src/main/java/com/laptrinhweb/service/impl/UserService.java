@@ -1,8 +1,8 @@
 package com.laptrinhweb.service.impl;
 
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
-import org.apache.tomcat.util.security.MD5Encoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,18 +20,20 @@ public class UserService implements IUserService {
 	@Autowired
 	private UserConverter userC;
 
-	private MD5Encoder md5;
 
 	@Override
 	public UserDTO checkUser(UserDTO model) {
-		UserEntity entity = userR.findByName(model.getname());
+		UserEntity entity = userR.findByName(model.getName());
 		if (entity == null) {
 			return null;
 		} else {
-//			this.md5.encode(binaryData)
-//			if()
+			if (entity.getPassword().equals(MD5(model.getPassword()))) {
+					System.out.println( userC.toDTO(entity));
+				return userC.toDTO(entity);
+			}
+			else
+				return null;
 
-			return userC.toDTO(entity);
 		}
 	}
 
@@ -45,13 +47,9 @@ public class UserService implements IUserService {
 			}
 			return sb.toString();
 		} catch (NoSuchAlgorithmException e) {
+			System.err.println(e);
 		}
 		return null;
-	}
-
-	public static void main(String[] args) {
-		MessageDigest md = MessageDigest.getInstance("MD5");
-		byte[] thedigest = md.digest(bytesOfMessage);
 	}
 
 }
