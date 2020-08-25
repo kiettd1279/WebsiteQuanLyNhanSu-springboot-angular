@@ -62,11 +62,11 @@ export class BasicInfoComponent implements OnInit {
     private apiService: ApiService, private fb: FormBuilder,private toastr :ToastrService) { 
       
     this.saveForm = this.fb.group({
-      firstName: [''],
-      lastName: [''],
-      birthDay:[''],
-      gender: [''],
-      email: [''],
+      firstName: ['',[Validators.required]],
+      lastName: ['',[Validators.required]],
+      birthDay:['',[Validators.required]],
+      gender: ['',[Validators.required]],
+      email: ['',[Validators.required]],
       phoneNumber: [''],
       hireDay: [''],
       salary: [''],
@@ -78,7 +78,6 @@ export class BasicInfoComponent implements OnInit {
   erroHo :any = false;
   ngOnInit(): void {
     this.loadEmployee();
-    this.choosedEmp = this.employees[0];
   }
   onHo($event){
     if($event.target.value == null ||$event.target.value==""){

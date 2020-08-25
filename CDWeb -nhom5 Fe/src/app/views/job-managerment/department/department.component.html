@@ -58,7 +58,7 @@
               <label for="name">Tên phòng ban</label>
               <input type="text" class="form-control" name="name" [(ngModel)]="department.name" ng-required="true" formControlName = "name">
               <span class="text-danger" *ngIf="addForm.get('name')?.errors?.required && addForm.get('name')?.touched">Trường dữ liệu không được để trống !</span>
-                <span class="text-danger" *ngIf="addForm.get('name')?.errors?.minlength && addForm.get('name')?.touched">Trường dữ liệu có độ dài tối thiểu là 2 kí tự !</span>
+              <span class="text-danger" *ngIf="addForm.get('name')?.errors?.minlength && addForm.get('name')?.touched">Trường dữ liệu có độ dài tối thiểu là 2 kí tự !</span>
             
             </div>
             <div class="form-group">
