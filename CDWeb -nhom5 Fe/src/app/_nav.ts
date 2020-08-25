@@ -3,14 +3,18 @@ import { INavData } from '@coreui/angular';
 
 export const navItems: INavData[] = [
   {
-    name: 'Dashboard',
+    name: 'Trang chủ',
     url: '/dashboard',
+<<<<<<< HEAD
     icon: 'icon-speedometer',
     
     badge: {
       variant: 'info',
       text: 'NEW'
     }
+=======
+    icon: 'icon-speedometer'
+>>>>>>> c3e4997b87ea101a295e9aa99b7b4f54abba1794
   },
   {
     title: true,
@@ -24,14 +28,6 @@ export const navItems: INavData[] = [
       {
         name: 'Thông tin cơ bản',
         url: '/quan-ly-nhan-vien/thong-tin-co-ban'
-      },
-      {
-        name: 'Giấy tờ tùy thân',
-        url: '/quan-ly-nhan-vien/giay-to-tuy-than'
-      },
-      {
-        name: 'Bằng cấp',
-        url: '/quan-ly-nhan-vien/bang-cap'
       }
     ]
   },
@@ -43,7 +39,7 @@ export const navItems: INavData[] = [
       {
         name: 'Danh sách ứng viên',
         url: '/tuyen-dung/tuyen-nhan-su',
-        icon: 'icon-people',
+        icon: '',
       },
     ]
   },

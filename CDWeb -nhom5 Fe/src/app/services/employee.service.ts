@@ -32,6 +32,12 @@ export class EmployeeService {
     return this.http.request(req);
   }
 
+  editEmployee(id: number,employee: Employee): Observable<any>{
+    const req = new HttpRequest('POST', `${this.apiService.apiUrl.employees.home}/${id}`, employee);
+
+    return this.http.request(req);
+  }
+
   jobInformations(paging: Paging): Observable<RootObj<[Employee]>> {
     const query = `page=${paging.page}&page_limit=${paging.pageLimit}`;
     console.log(`${this.apiService.apiUrl.employees.jobInformations}?${query}`);

@@ -78,6 +78,7 @@ export class BasicInfoComponent implements OnInit {
   erroHo :any = false;
   ngOnInit(): void {
     this.loadEmployee();
+    this.choosedEmp = this.employees[0];
   }
   onHo($event){
     if($event.target.value == null ||$event.target.value==""){
@@ -119,6 +120,13 @@ export class BasicInfoComponent implements OnInit {
 
 
   }
+  openEdit(id){
+    this.action == 'EDIT'
+    this.employeeService.getOne(id).subscribe(res =>{
+      this.employee = res;
+    });
+    this.showAddModal();
+  }
 
   selectFile(event){
     this.image = event.target.files.item(0);
@@ -131,6 +139,12 @@ export class BasicInfoComponent implements OnInit {
       this.employeeService.addEmployee(this.employee).subscribe(res =>{
         console.log(res);
         this.toastr.success("Thêm nhân viên ","thành công");
+        this.loadEmployee();
+      });
+    }else if(this.action == 'EDIT'){
+      this.employeeService.addEmployee(this.employee).subscribe(res =>{
+        console.log(res);
+        this.toastr.success("Cập nhật thông tin nhân viên ","thành công");
         this.loadEmployee();
       });
     }

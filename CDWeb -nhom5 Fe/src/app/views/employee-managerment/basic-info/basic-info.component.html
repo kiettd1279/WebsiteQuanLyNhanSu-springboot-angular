@@ -27,10 +27,10 @@
                                             {{choosedEmp.firstName}}</small></p>
                                 </div>
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class="h4 text-dark"><small> {{choosedEmp.birthDay}}</small></p>
+                                    <p class="h4 text-dark"><small>22/08/1998</small></p>
                                 </div>
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class="h4 text-dark"><small>{{choosedEmp.gender}}</small></p>
+                                    <p class="h4 text-dark"><small>Nữ</small></p>
                                 </div>
                             </div>
                             <div class="col-3">
@@ -46,10 +46,10 @@
                             </div>
                             <div class="col-3">
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class=" h4 text-dark"><small>{{choosedEmp.hireDay}}</small></p>
+                                    <p class=" h4 text-dark"><small>26/08/2020</small></p>
                                 </div>
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class="h4 text-primary"><small> {{choosedEmp.salary}}</small></p>
+                                    <p class="h4 text-primary"><small> 1000000</small></p>
                                 </div>
                                 <div class="ml-3 mt-3 mb-4">
                                     <p class="h4 text-primary"><small></small></p>
@@ -82,13 +82,13 @@
                             </div>
                             <div class="col-8">
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class="h4 text-dark"><small>{{choosedEmp.email}}</small></p>
+                                    <p class="h4 text-dark"><small>nhuy@gmail.com.vn</small></p>
                                 </div>
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class="h4 text-darkr"><small>{{choosedEmp.phoneNumber}}</small></p>
+                                    <p class="h4 text-darkr"><small>0971022800</small></p>
                                 </div>
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class="h4 text-dark"><small> {{choosedEmp.address}}</small></p>
+                                    <p class="h4 text-dark"><small>12A Lê Văn Việt, quận 9, TP HCM</small></p>
                                 </div>
 
                             </div>
@@ -118,13 +118,13 @@
                             </div>
                             <div class="col-8">
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class="h4 text-dark"><small> {{choosedEmp.salary}}</small></p>
+                                    <p class="h4 text-dark"><small>1000000</small></p>
                                 </div>
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class="h4text-dark"><small></small></p>
+                                    <p class="h4text-dark"><small>Lập trình viên</small></p>
                                 </div>
                                 <div class="ml-3 mt-3 mb-4">
-                                    <p class="h4 text-dark"><small> </small></p>
+                                    <p class="h4 text-dark"><small>Quận 9</small></p>
                                 </div>
                             </div>
                         </div>
@@ -139,7 +139,7 @@
                             *ngIf="img">
                     </div>
                     <div class="col-9">
-                        <div class="h3">Cố vấn tối cao tổng thống donal chum</div>
+                        <div class="h3"></div>
                     </div>
                 </div>
             </tab>
@@ -193,8 +193,7 @@
             </ngx-datatable-column>
             <ngx-datatable-column [width]="40">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                    <i (click)="openEdit(row.Emp_ID)" class="fa fa-edit text-primary mr-1 pointer"></i>
-                    <i (click)="delete(row.Emp_ID)" class="fa fa-trash-o text-danger pointer"></i>
+                    <i (click)="openEdit(row.id)" class="fa fa-edit text-primary mr-1 pointer"></i>
                 </ng-template>
             </ngx-datatable-column>
         </ngx-datatable>
