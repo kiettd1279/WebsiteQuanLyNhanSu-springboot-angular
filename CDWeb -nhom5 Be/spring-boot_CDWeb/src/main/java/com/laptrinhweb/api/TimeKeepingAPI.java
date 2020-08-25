@@ -45,7 +45,9 @@ public class TimeKeepingAPI {
 	// lấy danh sách bảng chấm cong sáng
 	@GetMapping(value = "/timeKeeping/refet")
 	public List<TimeKeepingDTO> refet() {
+	
 		return timekeepingService.RefetTimeKeeping();
+		
 	}
 	//bat dau ca lam
 	@PutMapping(value = "/timeKeeping/morning/{id}")
@@ -66,7 +68,7 @@ public class TimeKeepingAPI {
 		return timekeepingService.saveAll();
 	}
 	@GetMapping(value = "/timeKeepings")
-	public List<TimeKeepingInforDTO> findAll() {
+	public List<TimeKeepingDTO> findAll() {
 		return timekeepingService.findAll();
 	}
 

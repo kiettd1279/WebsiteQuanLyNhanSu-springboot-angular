@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Department } from '../models/department';
 import { Observable } from 'rxjs';
-import { ApiService } from './api.service';
+import { Paging } from '../models/paging';
 import { RootObj } from '../models/root-obj';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class DepartmentService {
 
   list(): Observable<[Department]> {
    
-    // console.log(`${this.apiService.apiUrl.departments.home}`);   
+    console.log(`${this.apiService.apiUrl.departments.home}`);   
     return this.apiService.get<[Department]>
       (`${this.apiService.apiUrl.departments.home}`);
   }
@@ -25,8 +26,4 @@ export class DepartmentService {
       return this.apiService.put<RootObj<Department>>(`${this.apiService.apiUrl.departments.home}/${data.id}`, data);
     }
   }
-  // getDeptById(id: Number): Observable<RootObj<Department>> {
-  //   return this.apiService.get<RootObj<Department>>
-  //     (`${this.apiService.apiUrl.departments.getDept}/${id}`, id);
-  // }
 }

@@ -5,7 +5,12 @@
           <span>Bảng chấm công : </span>
          
         </div>
+        <div class="col">
         
+            <!-- Default input -->
+            <input mdbInput type="text" (keypress)="onKeypress($event)" class="form-control" placeholder="Search">
+   
+        </div>
         <div class="col-auto">
           <button type="button" (click)="refet()"  class="btn btn-primary"><i  class="fa fa-refresh" aria-hidden="true"></i>
            Chấm công ngày mới</button>
@@ -24,12 +29,16 @@
 <div>
   
 </div>
+
+
 <tabset>
+ 
   <!-- ca sáng    -->
   <tab heading="Ca sáng">
     <div class="card">
       <div class="card-body">
         <ngx-datatable 
+        #table
         class="material" 
         [rows]="timeKeepingMorning" 
         [rowHeight]="50" 
@@ -37,7 +46,8 @@
         [sortType]="'multi'" 
         [headerHeight]="50" 
         [footerHeight]="50" 
-        [limit]="15"
+        [limit]="10"
+        [rows]="rows"
    
         >
         <ngx-datatable-column name="ID" >
@@ -45,15 +55,23 @@
                 <span>{{ row.id}}</span>
             </ng-template>
         </ngx-datatable-column>
+
         <ngx-datatable-column name="Mã Nhân viên" >
           <ng-template let-row="row" ngx-datatable-cell-template>
-              <span>{{ row.idEmployee}}</span>
+              <span>{{ row.employee.id}}</span>
           </ng-template>
       </ngx-datatable-column>
+         
+      <ngx-datatable-column name="Tên nhân viên" >
+        <ng-template let-row="row" ngx-datatable-cell-template>
+            <span>{{ row.employee.lastName}} {{ row.employee.firstName}}</span>
+        </ng-template>
+    </ngx-datatable-column>
+
   
         <ngx-datatable-column name="Tổng số giờ làm">
           <ng-template let-row="row" ngx-datatable-cell-template>
-            <span>{{ row.workDay}}</span>
+            <span>{{ row.workTime}}</span>
         </ng-template>
         </ngx-datatable-column>
   
@@ -102,7 +120,7 @@
         [sortType]="'multi'" 
         [headerHeight]="50" 
         [footerHeight]="50" 
-        [limit]="15"
+        [limit]="10"
    
         >
         <ngx-datatable-column name="ID" >
@@ -110,15 +128,22 @@
                 <span>{{ row.id}}</span>
             </ng-template>
         </ngx-datatable-column>
+
         <ngx-datatable-column name="Mã Nhân viên" >
           <ng-template let-row="row" ngx-datatable-cell-template>
-              <span>{{ row.idEmployee}}</span>
+            <span>{{ row.employee.id}} </span>
+          </ng-template>
+      </ngx-datatable-column>
+
+        <ngx-datatable-column name="Mã Nhân viên" >
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <span>{{ row.employee.lastName}} {{ row.employee.firstName}}</span>
           </ng-template>
       </ngx-datatable-column>
   
         <ngx-datatable-column name="Tổng số giờ làm">
           <ng-template let-row="row" ngx-datatable-cell-template>
-            <span>{{ row.totalWorkTime}}</span>
+            <span>{{ row.workTime}}</span>
         </ng-template>
         </ngx-datatable-column>
   

@@ -10,6 +10,7 @@ import { Paging } from '../../../models/paging';
 import { EmployeeService } from '../../../services/employee.service';
 import { JsonPipe } from '@angular/common';
 import { ApiService } from '../../../services/api.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -41,7 +42,7 @@ export class BasicInfoComponent implements OnInit {
   imgName: string = 'Choose file';
   public imagePath: any = "assets/img/candidates/";
   public job: any;
-
+ 
   choosedEmp: Employee = {
     id: 0,
     firstName: '',
@@ -58,10 +59,11 @@ export class BasicInfoComponent implements OnInit {
 
   constructor(
     private http: HttpClient, private excelService: ExcelService, private employeeService: EmployeeService,
-    private apiService: ApiService, private fb: FormBuilder) { 
+    private apiService: ApiService, private fb: FormBuilder,private toastr :ToastrService) { 
+      
     this.saveForm = this.fb.group({
-      firstname: [''],
-      lastname: [''],
+      firstName: [''],
+      lastName: [''],
       birthDay:[''],
       gender: [''],
       email: [''],
@@ -70,13 +72,27 @@ export class BasicInfoComponent implements OnInit {
       salary: [''],
       file:['']
       });
+      
   }
-
+  erroTen :any = false;
+  erroHo :any = false;
   ngOnInit(): void {
     this.loadEmployee();
-
   }
-
+  onHo($event){
+    if($event.target.value == null ||$event.target.value==""){
+      this.erroHo == true;
+    }else{
+      this.erroHo == false;
+    }
+  }
+  onTen($event) {
+     if($event.target.value == null ||$event.target.value==""){
+      this.erroTen =true;
+    }else{
+      this.erroTen =false;
+    }
+  }
   selectTab(tabId: number) {
     this.staticTabs.tabs[tabId].active = true;
   }
@@ -114,7 +130,8 @@ export class BasicInfoComponent implements OnInit {
     if(this.action == 'ADD'){
       this.employeeService.addEmployee(this.employee).subscribe(res =>{
         console.log(res);
-        this.ngOnInit;
+        this.toastr.success("Thêm nhân viên ","thành công");
+        this.loadEmployee();
       });
     }
     this.hideModal();

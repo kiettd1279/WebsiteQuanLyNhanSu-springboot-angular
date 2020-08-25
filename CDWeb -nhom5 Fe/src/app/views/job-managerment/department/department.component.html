@@ -65,7 +65,7 @@
               <label for="bio">Địa chỉ</label>
               <textarea class="form-control" formControlName = "locationId" name="locationId" [(ngModel)]="department.locationId" rows="3"
                 ng-maxlength="10"></textarea>
-                <span class="text-danger" *ngIf="addForm.get('locationId')?.errors?.required && addForm.get('locationId')?.touched">Trường dữ liệu không được để trống !</span>
+                <span class="text-danger" *ngIf="addForm.get('locationId')?.errors?.required && addForm.get('locationId')?.touched">Trường dữ liệu không được để trống!</span>
             </div>
           </div>
           <div class="modal-footer">

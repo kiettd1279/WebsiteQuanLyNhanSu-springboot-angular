@@ -20,6 +20,8 @@ export class AddCandidateComponent implements OnInit {
   saveForm: FormGroup;
 
   constructor( private router: Router, private fb: FormBuilder, private candidateService: CandidateService,private toastr :ToastrService) { 
+
+   
     this.saveForm = this.fb.group({
       firstname: [''],
       lastname: [''],
@@ -40,15 +42,47 @@ export class AddCandidateComponent implements OnInit {
       file:['']
       });
   }
-
+  errorName: any = false;
+  errorLastName: any = false;
+  errorDate: any = false;
+  errorGender: any = false;
   ngOnInit(): void { 
   }
-
+  //check validate ----------------------
+  onGender($event){
+    if($event.target.value==null ||$event.target.value==""){
+      this.errorGender = true;
+    }else{
+      this.errorGender =false;
+    }
+  }
+  onLastName($event){
+    if($event.target.value==null ||$event.target.value==""){
+      this.errorLastName = true;
+    }else{
+      this.errorLastName =false;
+    }
+  }
+  onName($event){
+    if($event.target.value==null ||$event.target.value==""){
+      this.errorName = true;
+    }else{
+      this.errorName =false;
+    }
+  
+  }
+  onDate($event){
+    if($event.target.value==null ||$event.target.value==""){
+      this.errorDate = true;
+    }else{
+      this.errorDate =false;
+    }
+  }
   selectFile(event) {
     this.image = "";
     console.log(this.image);
   }
-
+// -------------------------------------
   save() {
     this.candidateService.addCandidate(this.candidate).subscribe(res =>{
       console.log(res);
