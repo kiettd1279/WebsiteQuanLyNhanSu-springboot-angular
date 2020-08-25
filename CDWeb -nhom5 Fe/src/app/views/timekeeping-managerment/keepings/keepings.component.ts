@@ -3,6 +3,9 @@ import { Paging } from '../../../models/paging';
 import { TimeKeepingService } from '../../../services/time-keeping.service';
 import { Timekeeping } from '../../../models/timekeeping';
 import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
+import { FormControl } from '@angular/forms';
+import {map, startWith} from 'rxjs/operators';
 
 @Component({
   selector: 'app-keepings',
@@ -15,18 +18,39 @@ export class KeepingsComponent implements OnInit {
   timeKeeping =[] ;
   timeKeepingMorning =[];
   timeKeepingAfternoon =[];
-  
+  //options = [];
+
+  myControl = new FormControl();
+  options: string[] = [];
+  filteredOptions: Observable<string[]>;
   ngOnInit(): void {
+    this.loadOption();
+    this.filteredOptions = this.myControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
+
     //this.loadTimeKeeping();
     this.loadTimeKeepingMorning();
     this.loadTimeKeepingAfternoon();
     console.log("đã tạo bảng");
-
   }
 
-   
-    //search ------------------------------------------------
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
 
+    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  }
+    //search ------------------------------------------------
+    OpenSerch($event){
+      console.log($event.target.value);
+    }
+  loadOption(){
+    this.timeKeepingService.searchTimeKeeping().subscribe(res =>{
+      this.options = res;
+    });
+  }
     onKeypress($event){
       console.log($event.target.value);
    }

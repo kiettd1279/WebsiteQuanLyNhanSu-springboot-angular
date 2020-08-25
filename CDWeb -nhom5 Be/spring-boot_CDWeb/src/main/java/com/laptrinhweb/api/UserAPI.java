@@ -18,6 +18,12 @@ public class UserAPI {
 	private IUserService userService;
 
 	@PostMapping(value = "/user")
+<<<<<<< HEAD
+	public UserDTO check( @RequestBody UserDTO model) {
+		UserDTO dto = userService.checkUser(model);
+		System.out.println(dto.getname());
+	return	dto;
+=======
 	public ResponseEntity<UserDTO> check(@RequestBody UserDTO model) {
 		UserDTO result = userService.checkUser(model);
 		if(result==null)
@@ -25,5 +31,6 @@ public class UserAPI {
 
 		return new ResponseEntity<UserDTO>(result, HttpStatus.OK);
 
+>>>>>>> c3e4997b87ea101a295e9aa99b7b4f54abba1794
 	}
 }

@@ -5,7 +5,16 @@ export const navItems: INavData[] = [
   {
     name: 'Trang chủ',
     url: '/dashboard',
+<<<<<<< HEAD
+    icon: 'icon-speedometer',
+    
+    badge: {
+      variant: 'info',
+      text: 'NEW'
+    }
+=======
     icon: 'icon-speedometer'
+>>>>>>> c3e4997b87ea101a295e9aa99b7b4f54abba1794
   },
   {
     title: true,

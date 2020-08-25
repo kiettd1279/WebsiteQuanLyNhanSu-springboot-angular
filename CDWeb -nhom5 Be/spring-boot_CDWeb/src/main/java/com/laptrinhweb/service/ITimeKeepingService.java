@@ -38,5 +38,6 @@ public interface ITimeKeepingService {
 	List<TimeKeepingDTO> RefetTimeKeeping();
 
 	List<TimeKeepingDTO> CloseTimeKeeping();
-
+	List<String> search();
+	List<TimeKeepingDTO> listsearch(String text);
 }

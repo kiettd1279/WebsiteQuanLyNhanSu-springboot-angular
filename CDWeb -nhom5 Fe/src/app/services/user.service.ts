@@ -9,7 +9,10 @@ export class UserService {
 
   constructor(private apiService: ApiService) { }
   checkUser(user : User ): Observable<User>{
+<<<<<<< HEAD
+=======
     // console.log(user);
+>>>>>>> c3e4997b87ea101a295e9aa99b7b4f54abba1794
     return this.apiService.post<User>(`${this.apiService.apiUrl.user.user}`,user);
   }
 }
