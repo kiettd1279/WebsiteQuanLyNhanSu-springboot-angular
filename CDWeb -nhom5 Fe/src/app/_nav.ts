@@ -19,14 +19,6 @@ export const navItems: INavData[] = [
       {
         name: 'Thông tin cơ bản',
         url: '/quan-ly-nhan-vien/thong-tin-co-ban'
-      },
-      {
-        name: 'Giấy tờ tùy thân',
-        url: '/quan-ly-nhan-vien/giay-to-tuy-than'
-      },
-      {
-        name: 'Bằng cấp',
-        url: '/quan-ly-nhan-vien/bang-cap'
       }
     ]
   },
