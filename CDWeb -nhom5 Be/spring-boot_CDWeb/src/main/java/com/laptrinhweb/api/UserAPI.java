@@ -18,6 +18,8 @@ public class UserAPI {
 	
 	@PostMapping(value = "/user")
 	public UserDTO check( @RequestBody UserDTO model) {
-	return	userService.checkUser(model);
+		UserDTO dto = userService.checkUser(model);
+		System.out.println(dto.getname());
+	return	dto;
 	}
 }

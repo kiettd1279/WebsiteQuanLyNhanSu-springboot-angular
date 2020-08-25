@@ -3,14 +3,29 @@
       <div class="row">
         <div class="col">
           <span>Bảng chấm công : </span>
-         
         </div>
         <div class="col">
         
             <!-- Default input -->
-            <input mdbInput type="text" (keypress)="onKeypress($event)" class="form-control" placeholder="Search">
-   
+           <!--<input mdbInput type="text" (keypress)="onKeypress($event)" class="form-control" placeholder="Search">--> 
+
+           <form class="example-form">
+            <mat-form-field class="example-full-width">
+              <input type="text" (keyup.enter)="OpenSerch($event)"
+                     placeholder="Pick one"
+                     aria-label="Number"
+                     matInput
+                     [formControl]="myControl"
+                     [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </form>
         </div>
+
         <div class="col-auto">
           <button type="button" (click)="refet()"  class="btn btn-primary"><i  class="fa fa-refresh" aria-hidden="true"></i>
            Chấm công ngày mới</button>
@@ -47,7 +62,6 @@
         [headerHeight]="50" 
         [footerHeight]="50" 
         [limit]="10"
-        [rows]="rows"
    
         >
         <ngx-datatable-column name="ID" >

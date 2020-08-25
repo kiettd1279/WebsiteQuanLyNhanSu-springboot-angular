@@ -26,10 +26,11 @@ export class LoginComponent {
   }
 
   onKey($event){
-    console.log($event.target.value)
     
     this.user.name =$event.target.value;
     this.userService.checkUser(this.user).subscribe(res =>{
+      
+      console.log(res +"Back");
       if(res== null){
         this.error = true;
         this.susu = false;

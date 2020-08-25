@@ -86,6 +86,7 @@ public class TimeKeepingService implements ITimeKeepingService {
 		return null;
 
 	}
+
 	@Override
 	public List<TimeKeepingDTO> findAll() {
 		List<TimeKeepingEntity> listEntity = timeKeepingRepository.findByStatus(0);
@@ -203,8 +204,8 @@ public class TimeKeepingService implements ITimeKeepingService {
 		List<TimeKeepingDTO> dtos = new ArrayList<TimeKeepingDTO>();
 		List<TimeKeepingEntity> listMorning = timeKeepingRepository.findByMorning(1);
 		List<TimeKeepingEntity> listAfter = timeKeepingRepository.findByMorning(1);
-		if (listEntity.size( ) <=0|| listEntity == null||listMorning !=null|| listAfter !=null ) {
-			System.out.println("ko thẻ refect" +listEntity.size() );
+		if (listEntity.size() <= 0 || listEntity == null || listMorning != null || listAfter != null) {
+			System.out.println("ko thẻ refect" + listEntity.size());
 			return null;
 		}
 		for (TimeKeepingEntity item : listEntity) {
@@ -230,6 +231,28 @@ public class TimeKeepingService implements ITimeKeepingService {
 			listDTO.add(timeKeepingConveter.toDTO(item));
 		}
 		timeKeepingRepository.save(listEntity);
+		return listDTO;
+	}
+
+	@Override
+	public List<String> search() {
+		List<TimeKeepingEntity> listEntity = timeKeepingRepository.findByStatus(1);
+		List<String> list = new ArrayList<String>();
+		for (TimeKeepingEntity item : listEntity) {
+			list.add(item.getEmployee().getFirstName());
+		}
+	return list;
+	}
+
+	@Override
+	public List<TimeKeepingDTO> listsearch(String text) {
+		List<TimeKeepingEntity> listEntity = timeKeepingRepository.findByEmployeeFirstName(text);
+		List<TimeKeepingDTO> listDTO = new ArrayList<TimeKeepingDTO>();
+		for (TimeKeepingEntity item : listEntity) {
+			TimeKeepingDTO dto = timeKeepingConveter.toDTO(item);
+			dto.setEmployee(empConveter.toDTO(item.getEmployee()));
+			listDTO.add(dto);
+		}
 		return listDTO;
 	}
 }

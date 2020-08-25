@@ -10,5 +10,5 @@ public interface TimeKeepingRepository extends JpaRepository<TimeKeepingEntity, 
 	List<TimeKeepingEntity> findByStatus(int status);
 	List<TimeKeepingEntity> findByMorning(int morning);
 	List<TimeKeepingEntity> findByAfternoon(int afternoon);
-	
+	List<TimeKeepingEntity> findByEmployeeFirstName(String name);
 }

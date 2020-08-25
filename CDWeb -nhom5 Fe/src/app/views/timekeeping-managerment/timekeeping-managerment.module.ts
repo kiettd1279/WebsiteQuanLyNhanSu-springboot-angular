@@ -11,7 +11,12 @@ import { TimekeepingDetailComponent } from './timekeeping-detail/timekeeping-det
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { TimekeepingHistoryComponent } from './timekeeping-history/timekeeping-history.component' ;
 import {ToastrModule} from 'ngx-toastr';
-import { TimekeepingCloseComponent } from './timekeeping-close/timekeeping-close.component'
+import { TimekeepingCloseComponent } from './timekeeping-close/timekeeping-close.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatFormFieldModule  } from '@angular/material/form-field';
+// import { MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatInputModule } from '@angular/material/input';
+
 @NgModule({
   declarations: [TimekeppingComponent, KeepingsComponent, TimekeepingDetailComponent, TimekeepingHistoryComponent, TimekeepingCloseComponent],
   imports: [
@@ -22,6 +27,9 @@ import { TimekeepingCloseComponent } from './timekeeping-close/timekeeping-close
     FormsModule, 
     ReactiveFormsModule,
     TabsModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule,
   //  ToastrModule.forRoot()
     
   ]

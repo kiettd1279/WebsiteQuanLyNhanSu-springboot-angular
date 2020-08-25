@@ -10,20 +10,33 @@ import com.laptrinhweb.repository.UserRepository;
 import com.laptrinhweb.service.IUserService;
 
 @Service
-public class UserService implements IUserService{
+public class UserService implements IUserService {
 	@Autowired
 	private UserRepository userR;
-	
-	@Autowired 
+
+	@Autowired
 	private UserConverter userC;
-	
+
 	@Override
 	public UserDTO checkUser(UserDTO model) {
-		UserEntity entity = userR.findByName(model.getname());
+		UserEntity entity =null;
+		try {
+			 entity = userR.findByName(model.getname());
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 		if (entity == null) {
 			return null;
-		}else {
-			return userC.toDTO(entity);
+		} else {
+			if (entity.getName().equals(model.getname())) {
+				return userC.toDTO(entity);
+			} else {
+				UserDTO dto = new UserDTO();
+				dto.setUserName(model.getname());
+				dto.setPassword(null);
+				return dto;
+			}
 		}
 	}
 

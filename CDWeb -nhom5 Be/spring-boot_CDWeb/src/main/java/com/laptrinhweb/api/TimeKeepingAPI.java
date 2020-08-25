@@ -20,7 +20,16 @@ import com.laptrinhweb.service.ITimeKeepingService;
 public class TimeKeepingAPI {
 	@Autowired
 	private ITimeKeepingService timekeepingService;
-
+		@GetMapping(value ="/timekeeping/listsearch" )
+		public List<TimeKeepingDTO> listSearch(String text){
+			String  textSearch= "Văn Kiệt";
+		return	timekeepingService.listsearch(textSearch);
+		}
+	//search 
+	@GetMapping(value = "/timekeeping/search")
+	public List<String> search(){
+		return  timekeepingService.search();
+	}
 // xu ly cham cong 
 	@GetMapping(value = "/timeKeeping")
 	public List<TimeKeepingDTO> findAllTK() {
