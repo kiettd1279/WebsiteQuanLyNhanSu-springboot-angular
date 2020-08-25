@@ -19,20 +19,6 @@ const routes: Routes = [
           title: 'Thông tin cơ bản'
         },
       },
-      { 
-        path: 'giay-to-tuy-than', 
-        component: IdentificationComponent,
-        data: {
-          title: 'Giấy tờ tùy thân'
-        },
-      },
-      { 
-        path: 'bang-cap', 
-        component: DegreeComponent,
-        data: {
-          title: 'Bằng cấp'
-        },
-      },
     ]
   }
 ];
