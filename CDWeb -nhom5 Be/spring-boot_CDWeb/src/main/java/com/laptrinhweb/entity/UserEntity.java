@@ -1,8 +1,5 @@
 package com.laptrinhweb.entity;
 
-import java.util.Date;
-
-import javax.annotation.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,8 +33,8 @@ public class UserEntity {
 		return name;
 	}
 
-	public void setname(String name) {
-		name = name;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getPassword() {

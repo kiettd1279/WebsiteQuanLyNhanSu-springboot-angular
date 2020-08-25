@@ -10,16 +10,16 @@ public class UserConverter {
 	public UserEntity toEntity(UserDTO dto) {
 		UserEntity entity = new UserEntity();
 		entity.setId(dto.getId());
-		entity.setname(dto.getname());
+		entity.setName(dto.getName());
 		entity.setPassword(dto.getPassword());
 		return entity;
 	}
 
 	public UserDTO toDTO(UserEntity entity) {
 		UserDTO dto = new UserDTO();
-		entity.setId(dto.getId());
-		entity.setname(dto.getname());
-		entity.setPassword(dto.getPassword());
+		dto.setId(entity.getId());
+		dto.setUserName(entity.getName());
+//		dto.setPassword(entity.getPassword());
 		return dto;
 	}
 }
