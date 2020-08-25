@@ -35,7 +35,6 @@ export class ApiService {
       history: `${this.baseUrl}timeKeepingDetail/history`
     },
     departments: {
-      getDept: `${this.baseUrl}derparment`,
       home: `${this.baseUrl}derparment`
     },
     degrees: {
@@ -58,12 +57,13 @@ export class ApiService {
     },
     timekeeping: {
       home: `${this.baseUrl}timeKeeping`,
-
+      all : `${this.baseUrl}timeKeepings`,
       creat: `${this.baseUrl}timeKeeping/create`,
       morning:`${this.baseUrl}timeKeeping/morning`,
       afternoon:`${this.baseUrl}timeKeeping/afternoon`,
       refet : `${this.baseUrl}timeKeeping/refet`,
-      close : `${this.baseUrl}timeKeeping/close`
+      close : `${this.baseUrl}timeKeeping/close`,
+      search: `${this.baseUrl}timeKeeping/search`
     },
     schedule: {
       home: `${this.baseUrl}schedules`,
@@ -72,7 +72,7 @@ export class ApiService {
       home :`${this.baseUrl}salaries`,
       counting: `${this.baseUrl}salaries/counting`,
       increasing: `${this.baseUrl}salaries/increasing`,
-      payroll: `${this.baseUrl}salary/payroll`
+      payroll: `${this.baseUrl}salaries/payroll`
 
     },
     user:{

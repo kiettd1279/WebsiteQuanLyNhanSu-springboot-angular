@@ -19,17 +19,15 @@ export class LoginComponent {
 
   error: any = false;
   susu :any = false;
-  openRegister($event){
-  this.router.navigate(['register']);
-  console.log($event);
- }
+ 
   loginUser($event){
     console.log($event);
-      this.router.navigate(['quan-ly-nhan-vien/thong-tin-co-ban']);
+      this.router.navigate(['quan-ly-nhan-vien/thong-tin-co-ban'])
   }
 
   onKey($event){
     console.log($event.target.value)
+    
     this.user.name =$event.target.value;
     this.userService.checkUser(this.user).subscribe(res =>{
       if(res== null){

@@ -8,8 +8,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.laptrinhweb.conveter.EmployeeConveter;
 import com.laptrinhweb.conveter.TimeKeepingConveter;
 import com.laptrinhweb.dto.DateTime;
+import com.laptrinhweb.dto.EmployeeDTO;
 import com.laptrinhweb.dto.TimeKeepingDTO;
 import com.laptrinhweb.dto.TimeKeepingInforDTO;
 import com.laptrinhweb.entity.EmployeeEntity;
@@ -34,6 +36,9 @@ public class TimeKeepingService implements ITimeKeepingService {
 
 	@Autowired
 	private TimeKeepingDetailRepository timeKeepingDetailRepository;
+
+	@Autowired
+	private EmployeeConveter empConveter;
 
 	// tạo bảng lương với tất cả danh sách nhân viên
 	// nếu thời gian hiện tại(nowDate) < startDate -20; + chấm công
@@ -81,21 +86,17 @@ public class TimeKeepingService implements ITimeKeepingService {
 		return null;
 
 	}
-
 	@Override
-	public List<TimeKeepingInforDTO> findAll() {
-		List<TimeKeepingEntity> listEntity = timeKeepingRepository.findAll();
-		List<TimeKeepingInforDTO> listDTO = new ArrayList<TimeKeepingInforDTO>();
-
+	public List<TimeKeepingDTO> findAll() {
+		List<TimeKeepingEntity> listEntity = timeKeepingRepository.findByStatus(0);
+		List<TimeKeepingDTO> listDTO = new ArrayList<TimeKeepingDTO>();
 		for (TimeKeepingEntity item : listEntity) {
 
 			TimeKeepingDTO dto = timeKeepingConveter.toDTO(item);
-			TimeKeepingInforDTO dtoInfor = new TimeKeepingInforDTO();
-			dtoInfor.setData(dto);
-			dtoInfor.setOperation(true);
-			listDTO.add(dtoInfor);
+			EmployeeDTO emp = empConveter.toDTO(item.getEmployee());
+			dto.setEmployee(emp);
+			listDTO.add(dto);
 		}
-
 		return listDTO;
 	}
 
@@ -147,6 +148,8 @@ public class TimeKeepingService implements ITimeKeepingService {
 
 		for (TimeKeepingEntity item : listEntity) {
 			TimeKeepingDTO dto = timeKeepingConveter.toDTO(item);
+			EmployeeDTO emp = empConveter.toDTO(item.getEmployee());
+			dto.setEmployee(emp);
 			listDTO.add(dto);
 		}
 		return listDTO;
@@ -159,6 +162,8 @@ public class TimeKeepingService implements ITimeKeepingService {
 
 		for (TimeKeepingEntity item : listEntity) {
 			TimeKeepingDTO dto = timeKeepingConveter.toDTO(item);
+			EmployeeDTO emp = empConveter.toDTO(item.getEmployee());
+			dto.setEmployee(emp);
 			listDTO.add(dto);
 		}
 		return listDTO;
@@ -196,6 +201,12 @@ public class TimeKeepingService implements ITimeKeepingService {
 	public List<TimeKeepingDTO> RefetTimeKeeping() {
 		List<TimeKeepingEntity> listEntity = timeKeepingRepository.findByStatus(1);
 		List<TimeKeepingDTO> dtos = new ArrayList<TimeKeepingDTO>();
+		List<TimeKeepingEntity> listMorning = timeKeepingRepository.findByMorning(1);
+		List<TimeKeepingEntity> listAfter = timeKeepingRepository.findByMorning(1);
+		if (listEntity.size( ) <=0|| listEntity == null||listMorning !=null|| listAfter !=null ) {
+			System.out.println("ko thẻ refect" +listEntity.size() );
+			return null;
+		}
 		for (TimeKeepingEntity item : listEntity) {
 			item.setMorning(1);
 			item.setAfternoon(1);
@@ -209,7 +220,7 @@ public class TimeKeepingService implements ITimeKeepingService {
 	public List<TimeKeepingDTO> CloseTimeKeeping() {
 		List<TimeKeepingEntity> listEntity = timeKeepingRepository.findByStatus(1);
 		List<TimeKeepingDTO> listDTO = new ArrayList<TimeKeepingDTO>();
-		if (listEntity.size() <=0) {
+		if (listEntity.size() <= 0) {
 			return null;
 		}
 		for (TimeKeepingEntity item : listEntity) {

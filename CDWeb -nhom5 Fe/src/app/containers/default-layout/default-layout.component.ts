@@ -8,8 +8,9 @@ import { navItems } from '../../_nav';
 export class DefaultLayoutComponent {
   public sidebarMinimized = false;
   public navItems = navItems;
-
+  public  user ="admin";
   toggleMinimize(e) {
     this.sidebarMinimized = e;
   }
+
 }
