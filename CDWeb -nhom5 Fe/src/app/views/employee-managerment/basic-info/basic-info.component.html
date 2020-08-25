@@ -173,14 +173,11 @@
         <ngx-datatable class="material"
          [rows]="employees" 
          [rowHeight]="50" 
-         [columnMode]="'force'" 
-         [sortType]="'multi'"
-            [headerHeight]="50"
-             [footerHeight]="50"
-              [externalPaging]="true" 
-              [count]="paging.totalItems"
-            [offset]="paging.page - 1" 
-            [limit]="paging.pageLimit" (page)="loadEmployee($event)">
+        [columnMode]="'force'" 
+        [sortType]="'multi'" 
+        [headerHeight]="50" 
+        [footerHeight]="50" 
+        [limit]="10">
             
             <ngx-datatable-column name="Tên">
                 <ng-template let-row="row" ngx-datatable-cell-template>
@@ -222,13 +219,13 @@
                             <div class="row form-group ">
                                 <div class="col-6">
                                     <label for="pwd">Họ</label>
-                                    <input type="text" class="form-control" [(ngModel)]="employee.firstname"
-                                    formControlName="firstname">
+                                    <input type="text" class="form-control" [(ngModel)]="employee.firstName"
+                                    formControlName="firstName">
                                 </div>
                                 <div class="col-6">
                                     <label for="pwd">Tên</label>
-                                    <input type="text" class="form-control" [(ngModel)]="employee.lastname"
-                                    formControlName="lastname">
+                                    <input type="text" class="form-control" [(ngModel)]="employee.lastName"
+                                    formControlName="lastName">
 
                                 </div>
                             </div>

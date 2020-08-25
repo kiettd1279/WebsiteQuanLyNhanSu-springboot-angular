@@ -10,6 +10,7 @@ import { Paging } from '../../../models/paging';
 import { EmployeeService } from '../../../services/employee.service';
 import { JsonPipe } from '@angular/common';
 import { ApiService } from '../../../services/api.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -58,10 +59,10 @@ export class BasicInfoComponent implements OnInit {
 
   constructor(
     private http: HttpClient, private excelService: ExcelService, private employeeService: EmployeeService,
-    private apiService: ApiService, private fb: FormBuilder) { 
+    private apiService: ApiService, private fb: FormBuilder ,private toastr :ToastrService) { 
     this.saveForm = this.fb.group({
-      firstname: [''],
-      lastname: [''],
+      firstName: [''],
+      lastName: [''],
       birthDay:[''],
       gender: [''],
       email: [''],
@@ -113,11 +114,13 @@ export class BasicInfoComponent implements OnInit {
   save(){
     if(this.action == 'ADD'){
       this.employeeService.addEmployee(this.employee).subscribe(res =>{
+        this.toastr.success("Thành công","Thêm");
         console.log(res);
         this.ngOnInit;
       });
     }
     this.hideModal();
+    this.loadEmployee();
   }
 
   hideModal() {

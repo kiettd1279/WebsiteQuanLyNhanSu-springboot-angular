@@ -39,7 +39,7 @@ public class TimeKeepingService implements ITimeKeepingService {
 	// nếu thời gian hiện tại(nowDate) < startDate -20; + chấm công
 	// nếu thời gian hiện tại(nowDate) > startDate -20; + tạo ra bảng lương mới
 	/*
-	 * Status 1:Chấm công Status 2:Chốt bảng công Status 3: đã trả lương
+	 * Status 1:Chấm công Status 0:Chốt bảng công Status 2: đã trả lương
 	 */
 	@Override
 	public List<TimeKeepingDTO> saveAll() {
@@ -67,6 +67,8 @@ public class TimeKeepingService implements ITimeKeepingService {
 				t.setEmployee(item);
 				t.setMinimumTime(6);
 				t.setStatus(1);
+				t.setAfternoon(1);
+				t.setMorning(1);
 
 				newListTimKeeping.add(t);
 				listDTO.add(timeKeepingConveter.toDTO(t));
@@ -212,6 +214,8 @@ public class TimeKeepingService implements ITimeKeepingService {
 		}
 		for (TimeKeepingEntity item : listEntity) {
 			item.setStatus(0);
+			item.setAfternoon(0);
+			item.setMorning(0);
 			listDTO.add(timeKeepingConveter.toDTO(item));
 		}
 		timeKeepingRepository.save(listEntity);

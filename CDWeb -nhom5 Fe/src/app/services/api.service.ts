@@ -71,7 +71,7 @@ export class ApiService {
       home :`${this.baseUrl}salaries`,
       counting: `${this.baseUrl}salaries/counting`,
       increasing: `${this.baseUrl}salaries/increasing`,
-      payroll: `${this.baseUrl}salaries/payroll`
+      payroll: `${this.baseUrl}salary/payroll`
 
     },
     user:{
