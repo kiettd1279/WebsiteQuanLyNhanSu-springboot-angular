@@ -173,12 +173,11 @@
         <ngx-datatable class="material"
          [rows]="employees" 
          [rowHeight]="50" 
-        [columnMode]="'force'" 
-        [sortType]="'multi'" 
-        [headerHeight]="50" 
-        [footerHeight]="50" 
-        [limit]="10">
-            
+         [columnMode]="'force'" 
+         [sortType]="'multi'" 
+         [headerHeight]="50" 
+         [footerHeight]="50" 
+         [limit]="10" >
             <ngx-datatable-column name="Tên">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                     <span class="cursor-hover" (click)="choose(row)">{{ row.firstName}} {{ row.lastName}}</span>
@@ -218,15 +217,16 @@
                         <div class="col-9">
                             <div class="row form-group ">
                                 <div class="col-6">
-                                    <label for="pwd">Họ</label>
-                                    <input type="text" class="form-control" [(ngModel)]="employee.firstName"
+                                    <label for="pwd">Họ *</label>
+                                    <input type="text" class="form-control" (keydown.Tab)="onHo($event)" [(ngModel)]="employee.firstName"
                                     formControlName="firstName">
+                                    <p style="color: crimson;"*ngIf = "erroHo" >Không bỏ trống trường này</p>
                                 </div>
                                 <div class="col-6">
-                                    <label for="pwd">Tên</label>
-                                    <input type="text" class="form-control" [(ngModel)]="employee.lastName"
+                                    <label for="pwd">Tên *</label>
+                                    <input type="text" class="form-control" (keydown.Tab)="onTen($event)"  [(ngModel)]="employee.lastName"
                                     formControlName="lastName">
-
+                                    <p style="color: crimson;"*ngIf = "erroTen" >Không bỏ trống trường này</p>
                                 </div>
                             </div>
                             <div class="row form-group">

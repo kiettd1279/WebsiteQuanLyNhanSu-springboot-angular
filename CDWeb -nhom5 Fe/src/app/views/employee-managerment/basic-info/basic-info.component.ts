@@ -42,7 +42,7 @@ export class BasicInfoComponent implements OnInit {
   imgName: string = 'Choose file';
   public imagePath: any = "assets/img/candidates/";
   public job: any;
-
+ 
   choosedEmp: Employee = {
     id: 0,
     firstName: '',
@@ -59,7 +59,8 @@ export class BasicInfoComponent implements OnInit {
 
   constructor(
     private http: HttpClient, private excelService: ExcelService, private employeeService: EmployeeService,
-    private apiService: ApiService, private fb: FormBuilder ,private toastr :ToastrService) { 
+    private apiService: ApiService, private fb: FormBuilder,private toastr :ToastrService) { 
+      
     this.saveForm = this.fb.group({
       firstName: [''],
       lastName: [''],
@@ -71,13 +72,27 @@ export class BasicInfoComponent implements OnInit {
       salary: [''],
       file:['']
       });
+      
   }
-
+  erroTen :any = false;
+  erroHo :any = false;
   ngOnInit(): void {
     this.loadEmployee();
-
   }
-
+  onHo($event){
+    if($event.target.value == null ||$event.target.value==""){
+      this.erroHo == true;
+    }else{
+      this.erroHo == false;
+    }
+  }
+  onTen($event) {
+     if($event.target.value == null ||$event.target.value==""){
+      this.erroTen =true;
+    }else{
+      this.erroTen =false;
+    }
+  }
   selectTab(tabId: number) {
     this.staticTabs.tabs[tabId].active = true;
   }
@@ -114,13 +129,12 @@ export class BasicInfoComponent implements OnInit {
   save(){
     if(this.action == 'ADD'){
       this.employeeService.addEmployee(this.employee).subscribe(res =>{
-        this.toastr.success("Thành công","Thêm");
         console.log(res);
-        this.ngOnInit;
+        this.toastr.success("Thêm nhân viên ","thành công");
+        this.loadEmployee();
       });
     }
     this.hideModal();
-    this.loadEmployee();
   }
 
   hideModal() {

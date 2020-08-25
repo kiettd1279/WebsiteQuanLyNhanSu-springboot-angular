@@ -44,7 +44,6 @@ export const navItems: INavData[] = [
         url: '/tuyen-dung/tuyen-nhan-su',
         icon: 'icon-people',
       },
-     
     ]
   },
   {
@@ -96,8 +95,12 @@ export const navItems: INavData[] = [
       {
         name : 'Lịch sử',
         url : '/quan-ly-cham-cong/cham-cong-lichsu'
+      },
+     
+      {
+        name : 'Xem bảng công',
+        url : '/quan-ly-cham-cong/cham-cong-dong'
       }
-      
     ],
   },
   {

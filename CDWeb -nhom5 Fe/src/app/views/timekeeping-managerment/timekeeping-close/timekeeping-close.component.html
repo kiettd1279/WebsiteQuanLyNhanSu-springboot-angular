@@ -1,0 +1,77 @@
+<div class="card mt-2">
+    <div class="card-header">
+        <div class="row">
+            <div class="col">
+                <span>Danh sách bảng công: </span>
+                <!-- <select [(ngModel)]="customerTypeId" (change)="loadCustomer()">
+                      <option value="0"> --- All ---</option>
+                      <option *ngFor="let aCUT of customerTypes" value="{{aCUT.id}}">
+                          {{aCUT.name}}
+                      </option>
+                  </select> -->
+            </div>
+            <div class="col-auto">
+                <button type="button" (click)="paytrollSalary()" class="btn btn-success"><i class="fa fa-dollar"></i>
+                    Tính lương</button>
+            </div>
+        </div>
+    </div>
+<div class="card">
+    <div class="card-body">
+      <ngx-datatable 
+      class="material" 
+      [rows]="timeKeeping" 
+      [rowHeight]="50" 
+      [columnMode]="'force'" 
+      [sortType]="'multi'" 
+      [headerHeight]="50" 
+      [footerHeight]="50" 
+      [limit]="10"
+ 
+      >
+      <ngx-datatable-column name="ID" >
+          <ng-template let-row="row" ngx-datatable-cell-template>
+              <span>{{ row.id}}</span>
+          </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="Mã Nhân viên" >
+        <ng-template let-row="row" ngx-datatable-cell-template>
+            <span>{{ row.employee.id}}</span>
+        </ng-template>
+    </ngx-datatable-column>
+       
+    <ngx-datatable-column name="Tên nhân viên" >
+      <ng-template let-row="row" ngx-datatable-cell-template>
+          <span>{{ row.employee.lastName}} {{ row.employee.firstName}}</span>
+      </ng-template>
+  </ngx-datatable-column>
+
+
+      <ngx-datatable-column name="Tổng số giờ làm">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <span>{{ row.workTime}}</span>
+      </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="Giờ làm trễ">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <span>{{ row.timeLate}}</span>
+      </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="Giờ tăng ca">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <span>{{ row.overTime}}</span>
+      </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="Ngày chấm công">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <span>{{ row.dateStart}}</span>
+      </ng-template>
+      </ngx-datatable-column>
+
+  </ngx-datatable>
+</div>
+</div>

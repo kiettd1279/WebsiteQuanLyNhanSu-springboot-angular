@@ -10,7 +10,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import {ToastrModule} from 'ngx-toastr'
+
 @NgModule({
   declarations: [BasicInfoComponent, DegreeComponent, IdentificationComponent],
   imports: [
@@ -20,8 +20,7 @@ import {ToastrModule} from 'ngx-toastr'
     NgxDatatableModule,
     ModalModule.forChild(),
     FormsModule, 
-    ReactiveFormsModule,
-    ToastrModule.forRoot()
+    ReactiveFormsModule
   ]
 })
 export class EmployeeManagermentModule { }

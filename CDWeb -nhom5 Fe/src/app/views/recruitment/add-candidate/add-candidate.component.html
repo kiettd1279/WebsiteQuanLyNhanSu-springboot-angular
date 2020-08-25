@@ -6,30 +6,33 @@
             <div class="col-9">
                 <div class="row form-group ">
                     <div class="col-6">
-                        <label for="pwd">Họ</label>
-                        <input type="text" class="form-control"  [(ngModel)]="candidate.firstname"
+                        <label for="pwd">Họ *</label>
+                        <input type="text" class="form-control" (keydown.Tab)="onLastName($event)"  [(ngModel)]="candidate.firstname"
                         formControlName="firstname">
+                        <p style="color: crimson;" *ngIf = "errorLastName" >Không được bỏ trống trường này</p>
                     </div>
                     <div class="col-6">
-                        <label for="pwd">Tên</label>
-                        <input type="text" class="form-control" [(ngModel)]="candidate.lastname"
+                        <label for="pwd">Tên *</label>
+                        <input type="text" (keydown.Tab)="onName($event)" class="form-control" [(ngModel)]="candidate.lastname"
                         formControlName="lastname">
-
+                        <p style="color: crimson;" *ngIf = "errorName" >Không được bỏ trống trường này</p>
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-6">
-                        <label for="pwd">Ngày sinh</label>
-                        <input type="date" class="form-control" [(ngModel)]="candidate.birthDay"
+                        <label for="pwd">Ngày sinh *</label>
+                        <input type="date" class="form-control" (keydown.Tab)="onDate($event)" [(ngModel)]="candidate.birthDay"
                         formControlName="birthDay">
+                        <p style="color: crimson;" *ngIf = "errorDate" >Không được bỏ trống trường này</p>
                     </div>
                     <div class="col-6">
-                        <label for="pwd">Giới tính</label>
-                        <select [(ngModel)]="candidate.gender" class="form-control" formControlName="gender">
+                        <label for="pwd">Giới tính *</label>
+                        <select [(ngModel)]="candidate.gender" (keydown.Tab)="onGender($event)" class="form-control" formControlName="gender">
                             <option *ngFor="let g of genders" value="{{g.value}}">
                                 {{g.name}}
                             </option>
                         </select>
+                        <p style="color: crimson;" *ngIf = "errorGender" >Không được bỏ trống trường này</p>
                     </div>
                 </div>
                 <div class="row form-group">

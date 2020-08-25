@@ -1,3 +1,5 @@
+import { Employee } from './employee';
+
 export interface Timekeeping {
     id:number;
     workTime:number;
@@ -11,7 +13,7 @@ export interface Timekeeping {
     afternoon : number;
     workDay: number;
     status:number;
-   
+   employee :Employee;
 
 
 }
