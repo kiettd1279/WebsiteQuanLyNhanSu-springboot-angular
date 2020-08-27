@@ -2,7 +2,7 @@
   <main class="main d-flex align-items-center">
     <div class="container">
       <div class="row">
-        <div class="col-md-8 mx-auto">
+        <div class="col-md-6 mx-auto">
           <div class="card-group">
             <div class="card p-4">
               <div class="card-body">
@@ -10,7 +10,7 @@
                   <h1 style="margin-bottom: 50px;">Đăng nhập</h1>   
                   <!-- <p class="text-muted">Sign In to your account</p> -->
                   <p class="text-muted" style="color: crimson !important;" *ngIf = "error">Tên đăng nhập không đúng ?</p>
-                  <p class="text-muted" style="color: gold;" *ngIf = "susu">Tên đăng nhập hợp lệ !</p>
+                  <p class="text-muted" style="color: gold !important;" *ngIf = "susu">Tên đăng nhập hợp lệ !</p>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="icon-user"></i></span>
@@ -20,7 +20,7 @@
                   </div>
 
                   <p style="color: crimson!important;" *ngIf = "error">Mật khẩu không hợp lệ ?</p>
-                  <p style="color: gold;" *ngIf = "susu">Mật khẩu hợp lệ !</p>
+                  <p style="color: gold !important;" *ngIf = "susu">Mật khẩu hợp lệ !</p>
 
                   <div class="input-group mb-4">
                     <div class="input-group-prepend">

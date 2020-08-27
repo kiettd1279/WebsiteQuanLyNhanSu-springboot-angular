@@ -46,6 +46,8 @@ public class TimeKeepingService implements ITimeKeepingService {
 	/*
 	 * Status 1:Chấm công Status 0:Chốt bảng công Status 2: đã trả lương
 	 */
+	
+	// tao bang chấm công từ danh sahcs nhân viên
 	@Override
 	public List<TimeKeepingDTO> saveAll() {
 		List<TimeKeepingEntity> listoldTimeKeeping = timeKeepingRepository.findByStatus(1);
@@ -246,7 +248,12 @@ public class TimeKeepingService implements ITimeKeepingService {
 
 	@Override
 	public List<TimeKeepingDTO> listsearch(String text) {
-		List<TimeKeepingEntity> listEntity = timeKeepingRepository.findByEmployeeFirstName(text);
+		List<TimeKeepingEntity> listEntity =null;
+		if (text.equals("")|| text =="") {
+			listEntity = timeKeepingRepository.findByStatus(1);
+		}else {
+			listEntity= timeKeepingRepository.findByEmployeeFirstName(text);
+		}
 		List<TimeKeepingDTO> listDTO = new ArrayList<TimeKeepingDTO>();
 		for (TimeKeepingEntity item : listEntity) {
 			TimeKeepingDTO dto = timeKeepingConveter.toDTO(item);

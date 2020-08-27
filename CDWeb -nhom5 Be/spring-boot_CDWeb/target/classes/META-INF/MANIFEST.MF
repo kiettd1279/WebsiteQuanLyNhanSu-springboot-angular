@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: Kiet Vo
-=======
-Built-By: Admin
->>>>>>> c2b413ade7128997562f80c2ab5b23878c4c48b6
 Build-Jdk: 14.0.1
 Implementation-Title: spring-boot
 Implementation-Version: 1.0

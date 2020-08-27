@@ -44,7 +44,11 @@ export class KeepingsComponent implements OnInit {
   }
     //search ------------------------------------------------
     OpenSerch($event){
-      console.log($event.target.value);
+      this.timeKeepingService.listSearch($event.target.value).subscribe(res =>{
+          this.timeKeepingMorning =res;
+          this.timeKeepingAfternoon =res;
+
+      });
     }
   loadOption(){
     this.timeKeepingService.searchTimeKeeping().subscribe(res =>{

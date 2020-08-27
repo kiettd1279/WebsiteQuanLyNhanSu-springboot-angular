@@ -63,7 +63,8 @@ export class ApiService {
       afternoon:`${this.baseUrl}timeKeeping/afternoon`,
       refet : `${this.baseUrl}timeKeeping/refet`,
       close : `${this.baseUrl}timeKeeping/close`,
-      search: `${this.baseUrl}timekeeping/search`
+      search: `${this.baseUrl}timekeeping/search`,
+      listSearch:`${this.baseUrl}timekeeping/listsearch`,
     },
     schedule: {
       home: `${this.baseUrl}schedules`,

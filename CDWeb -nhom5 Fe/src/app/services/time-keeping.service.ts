@@ -10,7 +10,11 @@ import {Timekeeping } from '../models/timekeeping';
 export class TimeKeepingService {
 
   constructor(private apiService: ApiService) { }
+  listSearch(name :string) :Observable<[Timekeeping]> {
+    console.log(name +"name");
+    return this.apiService.get<[Timekeeping]>(`${this.apiService.apiUrl.timekeeping.listSearch}/${name}`);
 
+  }
   searchTimeKeeping():Observable<[string]>{
     return this.apiService.get<[string]>(`${this.apiService.apiUrl.timekeeping.search}`);
   } 
